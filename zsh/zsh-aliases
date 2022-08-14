@@ -1,0 +1,35 @@
+#!/bin/sh
+alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
+alias nvimrc='nvim ~/.config/nvim/'
+
+
+
+# ssh
+# alias login_ssh="ssh $SSH_USER@$SSH_HOST"
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -i'
+
+# git
+alias gitgraph="git log --oneline --graph --decorate --all"
+alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+case "$(uname -s)" in
+
+Darwin)
+	# echo 'Mac OS X'
+	;;
+
+Linux)
+	# echo 'Linux'
+	;;
+
+CYGWIN* | MINGW32* | MSYS* | MINGW*)
+	# echo 'MS Windows'
+	;;
+*)
+	# echo 'Other OS'
+	;;
+esac

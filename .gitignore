@@ -1,0 +1,42 @@
+*
+# git
+!git
+!git/**
+!.gitignore
+
+# lvim
+!lvim
+!lvim/config.lua
+!lvim/lua
+!lvim/lua/standard
+!lvim/lua/standard/*.lua
+
+# zsh
+!zsh
+!zsh/zshrc
+!zsh/zsh-aliases
+!zsh/zsh-exports
+!zsh/zsh-functions
+!zsh/zsh-prompt
+!zsh/zsh-vim-mode
+
+# alacritty
+!alacritty
+!alacritty/alacritty.yml
+
+
+## Linux ##
+
+
+## MacOS ##
+# yabai
+!yabai
+!yabai/yabairc
+
+# skhd 
+!skhd
+!skhd/skhdrc
+
+# limelight
+!limelight
+!limelight/limelightrc
