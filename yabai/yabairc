@@ -8,7 +8,7 @@ yabai -m space 6 --label six
 yabai -m space 9 --label nine
 
 # float system preferences. Most of these just disable Yabai form resizing them.
-yabai -m rule --add app="Système" sticky=on layer=above manage=off
+yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
