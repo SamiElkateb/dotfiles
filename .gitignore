@@ -10,6 +10,8 @@
 !lvim/lua
 !lvim/lua/standard
 !lvim/lua/standard/*.lua
+!lvim/ftplugin
+!lvim/ftplugin/*.lua
 
 # zsh
 !zsh

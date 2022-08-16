@@ -1,5 +1,9 @@
 local opts = { force = true }
 
+vim.api.nvim_create_user_command('JavaInitProject',
+  ':! mvn archetype:generate -DarchetypeArtifactId:org.apache.maven.archetypes:maven-archetype-quickstart -DgroupId=com.NewProject.app -DartifactId=NewProject -DinteractiveMode=false<cr>'
+  , opts)
+
 local dap_widget_status, widgets = pcall(require, "dap.ui.widgets")
 
 if dap_widget_status then
