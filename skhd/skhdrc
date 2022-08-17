@@ -1,19 +1,19 @@
 #!/usr/bin/env sh
 # change focus
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+cmd - h : yabai -m window --focus west
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - l : yabai -m window --focus east
 # (alt) change focus (using arrow keys)
-alt - left  : yabai -m window --focus west
-alt - down  : yabai -m window --focus south
-alt - up    : yabai -m window --focus north
-alt - right : yabai -m window --focus east
+cmd - left  : yabai -m window --focus west
+cmd - down  : yabai -m window --focus south
+cmd - up    : yabai -m window --focus north
+cmd - right : yabai -m window --focus east
 
-ctrl + shift - h : yabai -m window --space 1
-ctrl + shift - j : yabai -m window --space 2
-ctrl + shift - k : yabai -m window --space 3
-ctrl + shift - l : yabai -m window --space 4 
+cmd + shift - 0x12 : yabai -m window --space 1
+cmd + shift - 0x13 : yabai -m window --space 2
+cmd + shift - 0x14 : yabai -m window --space 3
+cmd + shift - 0x15 : yabai -m window --space 4 
 
 # shift window in current workspace
 alt + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
@@ -27,9 +27,9 @@ alt + shift - up : yabai -m window --swap north || $(yabai -m window --display n
 alt + shift - right : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
 
 # close focused window
-alt - w : yabai -m window --close
+cmd + shift - w : yabai -m window --close
 #fullscreen
-alt - f : yabai -m window --toggle zoom-fullscreen
+cmd + shift - f : yabai -m window --toggle zoom-fullscreen
 # move focused window to next/prev workspace
 ctrl + shift - 1 : yabai -m window --space 1
 ctrl + shift - 2 : yabai -m window --space 2
@@ -42,4 +42,4 @@ alt + shift - 8 : yabai -m window --space 8
 alt + shift - 9 : yabai -m window --space 9
 
 
-alt - a : open -n /Applications/Alacritty.app
+cmd - return : open -n /Applications/Alacritty.app
