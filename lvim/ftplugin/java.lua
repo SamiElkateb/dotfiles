@@ -5,9 +5,9 @@ vim.opt_local.cmdheight = 2 -- more space in the neovim command line for display
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-vim.notify('6')
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
+  vim.notify("FTPLUGIN: cmp_nvm_lsp not found")
   return
 end
 capabilities.textDocument.completion.completionItem.snippetSupport = false
@@ -15,10 +15,10 @@ capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 local status, jdtls = pcall(require, "jdtls")
 if not status then
+  vim.notify("FTPLUGIN: jdtls not found")
   return
 end
 
-vim.notify('19')
 -- Determine OS
 local home = os.getenv "HOME"
 if vim.fn.has "mac" == 1 then
@@ -31,7 +31,6 @@ else
   print "Unsupported system"
 end
 
-vim.notify('31')
 -- Find root of project
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
@@ -48,12 +47,8 @@ local workspace_dir = WORKSPACE_PATH .. project_name
 
 -- TODO: Testing
 
-vim.notify('47')
--- JAVA_DAP_ACTIVE = true
-
 local bundles = {}
 
--- if JAVA_DAP_ACTIVE then
   vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.config/lvim/.vscode-java-test/server/*.jar"), "\n"))
   vim.list_extend(
     bundles,
@@ -64,10 +59,7 @@ local bundles = {}
       "\n"
     )
   )
--- end
 
-vim.notify('63')
-vim.notify(bundles)
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
   -- The command that starts the language server
@@ -202,11 +194,9 @@ local config = {
   },
 }
 
-vim.notify('201')
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
 jdtls.start_or_attach(config)
-vim.notify('204')
 -- require('jdtls').setup_dap()
 
 vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
