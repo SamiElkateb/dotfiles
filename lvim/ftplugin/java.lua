@@ -1,4 +1,3 @@
-vim.notify('1')
 vim.opt_local.shiftwidth = 2
 vim.opt_local.tabstop = 2
 vim.opt_local.cmdheight = 2 -- more space in the neovim command line for displaying messages
@@ -18,6 +17,25 @@ if not status then
   vim.notify("FTPLUGIN: jdtls not found")
   return
 end
+
+
+-- PATHS AND FIRST CONFIG
+-- NOTES:
+-- Set the path to your eclipse jdtls launcher 
+local eclipse_path = "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
+
+-- NOTE: for debugging
+-- git clone git@github.com:microsoft/java-debug.git ~/.config/lvim/.java-debug
+-- cd ~/.config/lvim/.java-debug/
+-- ./mvnw clean install
+local microsoft_java_debug = "/.config/lvim/.java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+
+-- NOTE: for testing
+-- git clone git@github.com:microsoft/vscode-java-test.git ~/.config/lvim/.vscode-java-test
+-- cd ~/.config/lvim/.vscode-java-test
+-- npm install
+-- npm run build-plugin
+local vscode_java_test = "/.config/lvim/.vscode-java-test/server/*.jar"
 
 -- Determine OS
 local home = os.getenv "HOME"
@@ -45,19 +63,14 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 local workspace_dir = WORKSPACE_PATH .. project_name
 
--- TODO: Testing
+local launcher_path = vim.fn.glob(home .. eclipse_path)
 
 local bundles = {}
 
-  vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.config/lvim/.vscode-java-test/server/*.jar"), "\n"))
+  vim.list_extend(bundles, vim.split(vim.fn.glob(home .. vscode_java_test), "\n"))
   vim.list_extend(
     bundles,
-    vim.split(
-      vim.fn.glob(
-        home .. "/.config/lvim/.java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
-      ),
-      "\n"
-    )
+    vim.split(vim.fn.glob(home .. microsoft_java_debug), "\n" )
   )
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
@@ -65,11 +78,7 @@ local config = {
   -- The command that starts the language server
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
   cmd = {
-
-    -- 💀
-    "java", -- or '/path/to/java11_or_newer/bin/java'
-    -- depends on if `java` is in your $PATH env variable and if it points to the right version.
-
+    "java", -- or '/path/to/java11_or_newer/bin/java' depends on if `java` is in your $PATH env variable and if it points to the right version.
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -82,23 +91,10 @@ local config = {
     "java.base/java.util=ALL-UNNAMED",
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
-
-    -- 💀
     "-jar",
-    vim.fn.glob(home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
-    -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
-    -- Must point to the                                                     Change this to
-    -- eclipse.jdt.ls installation                                           the actual version
-
-    -- 💀
+    launcher_path,
     "-configuration",
     home .. "/.local/share/nvim/lsp_servers/jdtls/config_" .. CONFIG,
-    -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
-    -- Must point to the                      Change to one of `linux`, `win` or `mac`
-    -- eclipse.jdt.ls installation            Depending on your system.
-
-    -- 💀
-    -- See `data directory configuration` section in the README
     "-data",
     workspace_dir,
   },
@@ -110,9 +106,6 @@ local config = {
   on_init = require("lvim.lsp").common_on_init,
   on_exit = require("lvim.lsp").common_on_exit,
   capabilities = capabilities,
-  -- 💀
-  -- This is the default if not provided, you can remove it. Or adjust as needed.
-  -- One dedicated LSP server & client will be started per unique root_dir
   root_dir = root_dir,
 
   -- Here you can configure eclipse.jdt.ls specific settings
@@ -230,19 +223,21 @@ local vopts = {
 }
 
 local mappings = {
-  J = {
+  j = {
     name = "Java",
     o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
     v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
     c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
-    t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
-    T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
     u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
   },
+  d = {
+    j = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
+    J = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
+  }
 }
 
 local vmappings = {
-  J = {
+  j = {
     name = "Java",
     v = { "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", "Extract Variable" },
     c = { "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", "Extract Constant" },

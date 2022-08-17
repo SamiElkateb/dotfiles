@@ -1,7 +1,7 @@
--- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
---   "jdtls",
--- })
-lvim.log.level = "debug"
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
+  "jdtls",
+})
+lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.colorscheme = "tokyonight"
 lvim.leader = "space"
