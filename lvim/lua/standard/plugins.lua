@@ -8,6 +8,6 @@ lvim.plugins = {
   {
     "mfussenegger/nvim-jdtls",
     commit = "87bdf2b216f3346abb099704c9bb45e5eb9df43a",
-    -- ft = "java"
+    ft = "java"
   }
 }

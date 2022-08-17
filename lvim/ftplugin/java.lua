@@ -111,11 +111,13 @@ local config = {
     workspace_dir,
   },
 
-  on_attach = require("lvim.lsp").common_on_attach,
+  on_attach = function ()
+    require('jdtls').setup_dap { hotcodereplace = "auto" }
+    require('jdtls.dap').setup_dap_main_class_configs()
+  end,
   on_init = require("lvim.lsp").common_on_init,
   on_exit = require("lvim.lsp").common_on_exit,
-  capabilities = require("lvim.lsp").common_capabilities(),
-
+  capabilities = capabilities,
   -- 💀
   -- This is the default if not provided, you can remove it. Or adjust as needed.
   -- One dedicated LSP server & client will be started per unique root_dir
@@ -238,7 +240,7 @@ local vopts = {
 }
 
 local mappings = {
-  L = {
+  J = {
     name = "Java",
     o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
     v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
@@ -250,7 +252,7 @@ local mappings = {
 }
 
 local vmappings = {
-  L = {
+  J = {
     name = "Java",
     v = { "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", "Extract Variable" },
     c = { "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", "Extract Constant" },

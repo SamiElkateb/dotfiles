@@ -1,6 +1,6 @@
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
-  "jdtls",
-})
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
+--   "jdtls",
+-- })
 lvim.log.level = "debug"
 lvim.format_on_save = false
 lvim.colorscheme = "tokyonight"
@@ -43,5 +43,5 @@ lvim.lsp.installer.setup.ensure_installed = {
   "jsonls",
   "eslint",
   "tsserver",
-  -- "jdtls"
+  "jdtls"
 }
