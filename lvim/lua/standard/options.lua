@@ -40,6 +40,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- LSP --
 lvim.lsp.installer.setup.ensure_installed = {
   "sumeko_lua",
+  "pyright",
   "jsonls",
   "eslint",
   "tsserver",
