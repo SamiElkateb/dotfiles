@@ -1,0 +1,77 @@
+#!/usr/bin/osascript -l JavaScript
+/* Get and change macOS Focus modes (https://support.apple.com/en-gb/guide/mac-help/mchl613dc43f/mac) */
+
+function getArgs() {
+  var args = $.NSProcessInfo.processInfo.arguments
+  var argv = []
+  var argc = args.count
+
+  for (var i = 0; i < argc; i++) {
+    argv.push(ObjC.unwrap(args.objectAtIndex(i)))
+  }
+
+  delete args
+  return argv;
+}
+
+function menuItemByName(menuItemName) {
+  return controlCenterProcess.menuBars.at(0).menuBarItems.byName(menuItemName)
+}
+
+function checkboxByName(checkboxName) {
+  return controlCenterProcess.windows.byName("Control Centre").checkboxes.byName(checkboxName)
+}
+
+// This should cause the "Focus Mode" icon (the one with the crescent moon) to show up on the Menu Bar.
+// It doesn't seem to show till you go into one of the Focus modes once. And it goes away by itself sometimes.
+function enableFocusModeIconIfNeeded() {
+  if (menuItemByName("Focus").exists()) {
+    return
+  }
+
+  menuItemByName("Control Centre").click()
+
+  checkboxByName("Focus").click()
+  checkboxByName("Do Not Disturb").click()
+
+  menuItemByName("Control Centre").click()
+}
+
+function nameOfCurrentFocusMode() {
+  if (!menuItemByName("Focus").exists()) {
+    return null
+  }
+
+  enableFocusModeIconIfNeeded()
+  menuItemByName("Focus").click()
+
+  checkboxOfCurrentFocusMode = controlCenterProcess.windows.byName("Control Centre").checkboxes().find((checkbox) => checkbox.value() == 1)
+  nameOfCheckbox = (typeof(checkboxOfCurrentFocusMode) !== 'undefined' && checkboxOfCurrentFocusMode.exists() ? checkboxOfCurrentFocusMode.title() : null)
+
+  menuItemByName("Focus").click()
+  return nameOfCheckbox
+}
+
+function toggle(focusModeToToggle) {
+  enableFocusModeIconIfNeeded()
+  menuItemByName("Focus").click()
+  checkboxByName(focusModeToToggle).click()
+  menuItemByName("Focus").click()
+}
+
+var controlCenterProcess = Application("System Events").applicationProcesses.byName("ControlCenter")
+var args = getArgs()
+
+if (args.length > 1 && args[args.length - 1] == 'show') {
+  nameOfCurrentFocusMode()
+} else if (args.length > 2 && args[args.length - 2] == 'toggle') {
+  toggle(args[args.length - 1])
+} else {
+  console.log('Usage: ');
+
+  console.log(`  ${args.join(' ')} show`)
+  console.log('    Show the current macOS Focus mode. Outputs "null" if no Focus mode is currently active.\n')
+
+  console.log(`  ${args.join(' ')} toggle focus_mode`)
+  console.log('    Toggle the provided macOS Focus mode. "Do Not Disturb" is a standard focus mode, for instance.')
+}

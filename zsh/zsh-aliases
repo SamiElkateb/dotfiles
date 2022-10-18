@@ -1,8 +1,10 @@
 #!/bin/sh
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias nvimrc='nvim ~/.config/nvim/'
-alias gotd='cd /Users/Sami/workspace/polytech/td'
-alias gocours='cd /Users/Sami/workspace/polytech/cours'
+
+alias gofiches="cd /Users/Sami/Library/Mobile\ Documents/iCloud~md~obsidian/Documents"
+alias start_ml="start_conda && conda activate machine_learning"
+alias gvim="lvim"
 
 # ssh
 # alias login_ssh="ssh $SSH_USER@$SSH_HOST"

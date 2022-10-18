@@ -1,0 +1,11 @@
+function killapps(){
+  if [ $1 = "focus-homework" ]; then
+    killall Dock
+  elif [ $1 = "focus-study" ]; then
+    killall Dock
+  elif [ $1 = "focus-gaming" ]; then
+    killall Dock
+  elif [ $1 = "remove-focus" ]; then
+    killall Dock
+  fi
+}

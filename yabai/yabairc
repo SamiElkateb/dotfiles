@@ -17,6 +17,10 @@ yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="^Logi Options$" manage=off
 
+yabai -m rule --add app="Main" manage=off
+yabai -m rule --add app="Field" manage=off
+yabai -m rule --add app="java" manage=off
+
 
 yabai -m config window_placement second_child
 yabai -m config window_topmost off

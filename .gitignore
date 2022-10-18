@@ -12,6 +12,11 @@
 !lvim/lua/standard/*.lua
 !lvim/ftplugin
 !lvim/ftplugin/*.lua
+!lvim/ftdetect
+!lvim/ftdetect/*.lua
+!lvim/after
+!lvim/after/ftplugin
+!lvim/after/ftplugin/*.lua
 
 # zsh
 !zsh
@@ -21,6 +26,8 @@
 !zsh/zsh-functions
 !zsh/zsh-prompt
 !zsh/zsh-vim-mode
+!zsh/zsh-kill-apps-main
+!zsh/focus-mode
 
 # alacritty
 !alacritty

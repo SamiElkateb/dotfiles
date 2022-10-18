@@ -41,6 +41,7 @@ local mappings = {
     c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
     u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
     b = { "<Cmd>JavaBuildAndRun<CR>", "Build and Run" },
+    i = { "<Cmd>MavenInstallDependencies<CR>", "Maven Install Dependencies" },
   },
   d = {
     j = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
