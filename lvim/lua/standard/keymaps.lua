@@ -1,4 +1,5 @@
 local keymap = lvim.keys.normal_mode
+local insert_keymap = lvim.keys.insert_mode
 local which_keymap = lvim.builtin.which_key.mappings
 
 which_keymap["P"] = {
@@ -6,6 +7,7 @@ which_keymap["P"] = {
 }
 
 keymap["<C-s>"] = ":w<cr>"
+insert_keymap["kj"] = "<Esc>"
 
 -- Telescope --
 keymap["<C-p>"] = "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>"
@@ -16,3 +18,10 @@ which_keymap['d'] = {
   v = {':DapSidebarToggle<cr>', "Sidebar Toggle"}
 }
 -- keymap["<leader>dv"] = ":DapSidebarToggle<cr>"
+
+-- ToggleTerm --
+keymap["<C-t>"] = ":ToggleTerm<cr>"
+
+-- Buffer --
+lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"

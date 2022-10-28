@@ -1,9 +1,9 @@
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
-  "jdtls",
-})
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
+--   "jdtls",
+-- })
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "tokyonight"
+-- lvim.colorscheme = "tokyonight"
 lvim.leader = "space"
 vim.opt.relativenumber = true
 lvim.builtin.alpha.active = true
@@ -15,6 +15,7 @@ vim.opt.foldmethod = 'indent' -- syntax / indent
 vim.opt.foldlevel = 20
 vim.opt.foldclose = 'all'
 vim.opt.foldenable = false
+vim.opt.timeoutlen = 300
 
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
