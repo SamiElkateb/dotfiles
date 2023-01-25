@@ -1,0 +1,16 @@
+[
+	{
+		"name": "isa-devops",
+		"rootPath": "/Users/Sami/workspace/polytech/td/isa-devops/",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	},
+	{
+		"name": "prog-fonc",
+		"rootPath": "/Users/Sami/workspace/polytech/td/prog-fonc/tds",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	}
+]

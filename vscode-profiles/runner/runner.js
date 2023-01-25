@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+const fs = require("fs");
+const path = require("path");
+const { execFileSync, exec, execSync } = require("child_process");
+
+const filenameToJSON = (filename) => {
+  const filePath = path.join(__dirname, filename);
+  const fileString = fs.readFileSync(filePath, "utf8");
+  return JSON.parse(fileString);
+};
+
+const parseArgs = (argv) => {
+  return argv.reduce((acc, curr) => {
+    if (curr === ".") {
+      return { ...acc, openFolder: true };
+    }
+    if (curr.match(/^-p=\w+(.json)?$/))
+      return { ...acc, lang: curr.match(/^-p=(\w+)(.json)?$/)[1] + ".json" };
+    if (curr.match(/^--profile=\w+(.json)?$/))
+      return {
+        ...acc,
+        lang: curr.match(/^--profile=(\w+)(.json)?$/)[1] + ".json",
+      };
+    return acc;
+  }, {});
+};
+
+try {
+  const args = parseArgs(process.argv);
+
+  const settingsBuilderPath = path.join(__dirname, "../settings/builder.js");
+  execFileSync(settingsBuilderPath, [`--profile=${args.lang}`]);
+
+  const projectBuilderPath = path.join(__dirname, "../projects/builder.js");
+  execFileSync(projectBuilderPath, [`--profile=${args.lang}`]);
+
+  const extensionDisablerPath = path.join(
+    __dirname,
+    "../extensions/disabler.js"
+  );
+  const extensionsToDisable = JSON.parse(
+    execFileSync(extensionDisablerPath, [`--profile=${args.lang}`]).toString()
+  );
+
+  const disabledExtensions = extensionsToDisable.reduce(
+    (acc, curr) => acc + `--disable-extension ${curr} `,
+    ""
+  );
+  const openFolder = args.openFolder ? '.' : '';
+  const command = `code --user-data-dir="$HOME/.config/vscode-profiles/common/data" --extensions-dir="$HOME/.config/vscode-profiles/common/extensions" ${disabledExtensions} ${openFolder}`;
+  exec(command);
+} catch (err) {
+  console.error(err);
+}

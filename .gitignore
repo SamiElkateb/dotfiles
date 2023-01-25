@@ -36,11 +36,20 @@
 
 # vscode
 !vscode-profiles
+!vscode-profiles/settings
 !vscode-profiles/settings/*
+!vscode-profiles/runner
 !vscode-profiles/runner/*
+!vscode-profiles/projects
+!vscode-profiles/projects/*.json
+!vscode-profiles/extensions
 !vscode-profiles/extensions/*
+!vscode-profiles/common/
+!vscode-profiles/common/data
 !vscode-profiles/common/data/User
+!vscode-profiles/common/data/User/keybindings.json
 !vscode-profiles/common/extensions
+!vscode-profiles/common/extensions/extensions.json
 
 ## Linux ##
 
@@ -57,5 +66,4 @@
 # limelight
 !limelight
 !limelight/limelightrc
-
 

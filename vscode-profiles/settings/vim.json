@@ -1,0 +1,113 @@
+{
+  "vim.leader": "<Space>",
+  "vim.useSystemClipboard": true,
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["k", "j"],
+      "after": ["<esc>", "l"]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"]
+    },
+    {
+      "before": ["<leader>", "f", "r"],
+      "commands": ["references-view.findImplementations"]
+    },
+    {
+      "before": ["<leader>", "g", "s"],
+      "commands": ["workbench.action.gotoSymbol"]
+    },
+    {
+      "before": ["<leader>", "s", "s"],
+      "commands": ["workbench.action.showAllSymbols"]
+    },
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["<leader>", "g", "f"],
+      "commands": ["workbench.action.navigateForward"]
+    },
+    {
+      "before": ["<leader>", "g", "b"],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["<leader>", "l", "r"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["<S-k>"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["<S-l>"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<S-h>"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<leader>", "t", "t"],
+      "commands": ["workbench.action.tasks.test"]
+    },
+    {
+      "before": ["<leader>", "z", "e", "n"],
+      "commands": ["workbench.action.toggleZenMode"]
+    },
+    {
+      "before": ["<leader>", "a"],
+      "commands": ["workbench.action.switchWindow"]
+    },
+    {
+      "before": ["<leader>", "n", "e"],
+      "commands": ["editor.action.marker.nextInFiles"]
+    },
+    {
+      "before": ["<leader>", "c"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<leader>", "j", "b"],
+      "commands": ["workbench.action.tasks.build"]
+    },
+    {
+      "before": ["<leader>", "j", "t"],
+      "commands": ["workbench.action.tasks.test"]
+    },
+    {
+      "before": ["<leader>", "l", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["<leader>", "l", "l"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["<leader>", "t", "t"],
+      "commands": [
+        "workbench.action.terminal.toggleTerminal",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": {
+            "text": "pwd\u000D"
+          },
+          "when": "editorLangId == [javascript]"
+        }
+      ]
+    }
+  ]
+}

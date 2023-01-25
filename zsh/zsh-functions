@@ -1,3 +1,4 @@
+#!/bin/sh
 source "$HOME/.config/zsh/zsh-do"
 source "$HOME/.config/zsh/zsh-kill-apps"
 # Function to source files if they exist
@@ -56,25 +57,25 @@ function start_conda(){
 
 function gocours(){
   if [ "$1" ]; then
-    cd /Users/Sami/workspace/polytech/cours && cd "$1"
+    cd $HOME/workspace/polytech/cours && cd "$1"
   else 
-    cd /Users/Sami/workspace/polytech/cours
+    cd $HOME/workspace/polytech/cours
   fi
 }
 
 function goobsidian(){
   if [ "$1" ]; then
-    cd /Users/Sami/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Polytech/ && cd "$1"
+    cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Polytech/ && cd "$1"
   else 
-    cd /Users/Sami/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Polytech/
+    cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Polytech/
   fi
 }
 
 function gotd(){
   if [ "$1" ]; then
-    cd /Users/Sami/workspace/polytech/td && cd "$1"
+    cd $HOME/workspace/polytech/td && cd "$1"
   else 
-    cd /Users/Sami/workspace/polytech/td
+    cd $HOME/workspace/polytech/td
   fi
 }
 
@@ -94,6 +95,11 @@ function build_vscode_settings(){
 
 function run_vscode_profile(){
   $HOME/.config/vscode-profiles/runner/runner.js $1 $2
+}
+
+function vscode(){
+  music 
+  run_vscode_profile --profile=$1 $2
 }
 
 function block_sites(){

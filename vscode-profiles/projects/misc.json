@@ -1,0 +1,23 @@
+[
+  {
+    "name": "cv",
+    "rootPath": "/Users/Sami/workspace/latex-templates/cv",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  },
+  {
+    "name": "diagrams",
+    "rootPath": "/Users/Sami/workspace/diagrams",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  },
+  {
+    "name": "Polytech",
+    "rootPath": "/Users/Sami/Library/Mobile Documents/iCloud~md~obsidian/Documents/Polytech",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  }
+]

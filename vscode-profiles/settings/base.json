@@ -1,0 +1,25 @@
+{
+  "editor.formatOnSave": true,
+  "editor.lineNumbers": "relative",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.colorTheme": "Tokyo Night",
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "editor.minimap.enabled": false,
+  "telemetry.telemetryLevel": "off",
+  "peacock.affectStatusBar": false,
+  "peacock.affectSashHover": false,
+  "peacock.affectActivityBar": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "react",
+  "material-icon-theme.opacity": 0.6,
+  "material-icon-theme.saturation": 0.8,
+  "workbench.startupEditor": "none",
+  "zenMode.hideLineNumbers": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

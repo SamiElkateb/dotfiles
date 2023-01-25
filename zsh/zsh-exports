@@ -7,12 +7,12 @@ export HISTIGNORE='*sudo -S*'
 export PATH="$HOME/.local/bin":$PATH
 
 # pnpm
-export PNPM_HOME="/Users/Sami/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 # dotnet
-export PATH="$PATH:/Users/Sami/.dotnet/tools"
+export PATH="$PATH:$HOME/.dotnet/tools"
 
 # racket
 # export PATH="$PATH:/Applications/Racket/bin"
