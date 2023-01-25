@@ -8,7 +8,7 @@ lvim.leader = "space"
 vim.opt.relativenumber = true
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = true
+-- lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 
 vim.opt.foldmethod = 'indent' -- syntax / indent
@@ -47,3 +47,6 @@ lvim.lsp.installer.setup.ensure_installed = {
   "tsserver",
   "jdtls"
 }
+
+vim.opt.spell = true
+vim.opt.spelllang = { "en", "fr" }

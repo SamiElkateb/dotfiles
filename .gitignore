@@ -20,7 +20,7 @@
 
 # zsh
 !zsh
-!zsh/zshrc
+!zsh/.zshrc
 !zsh/zsh-aliases
 !zsh/zsh-exports
 !zsh/zsh-functions
@@ -33,6 +33,14 @@
 !alacritty
 !alacritty/alacritty.yml
 
+
+# vscode
+!vscode-profiles
+!vscode-profiles/settings/*
+!vscode-profiles/runner/*
+!vscode-profiles/extensions/*
+!vscode-profiles/common/data/User
+!vscode-profiles/common/extensions
 
 ## Linux ##
 
@@ -49,3 +57,5 @@
 # limelight
 !limelight
 !limelight/limelightrc
+
+

@@ -4,7 +4,7 @@ lvim.builtin.dap.active = true
 
 local dap_status, dap = pcall(require, "dap")
 if not dap_status then
-  vim.notify("dap not found")
+  -- vim.notify("dap not found")
   return
 end
 

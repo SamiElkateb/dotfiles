@@ -62,12 +62,38 @@ function gocours(){
   fi
 }
 
+function goobsidian(){
+  if [ "$1" ]; then
+    cd /Users/Sami/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Polytech/ && cd "$1"
+  else 
+    cd /Users/Sami/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Polytech/
+  fi
+}
+
 function gotd(){
   if [ "$1" ]; then
     cd /Users/Sami/workspace/polytech/td && cd "$1"
   else 
     cd /Users/Sami/workspace/polytech/td
   fi
+}
+
+function newReport(){
+  mkdir report
+  cp "$HOME/workspace/latex-templates/report/main.tex" "$PWD/report"
+  cp -r "$HOME/workspace/latex-templates/report/template" "$PWD/report"
+  cp -r "$HOME/workspace/latex-templates/report/content" "$PWD/report"
+  cp -r "$HOME/workspace/latex-templates/report/images"  "$PWD/report"
+}
+
+function build_vscode_settings(){
+  $HOME/.config/vscode-profiles/settings/builder.js $1
+  yes | cp "$HOME/.config/vscode-profiles/settings/settings.json" "$HOME/.config/vscode-profiles/common/data/User/settings.json" 
+}
+
+
+function run_vscode_profile(){
+  $HOME/.config/vscode-profiles/runner/runner.js $1 $2
 }
 
 function block_sites(){
@@ -132,6 +158,9 @@ function start_focus(){
   fi
   if [ $FOCUS_MODE = "Gaming" ]; then
     start_gaming
+  fi
+  if [ $FOCUS_MODE = "Sleep" ]; then
+    pmset displaysleepnow
   fi
 }
 

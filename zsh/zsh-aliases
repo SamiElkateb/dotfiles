@@ -6,6 +6,13 @@ alias gofiches="cd /Users/Sami/Library/Mobile\ Documents/iCloud~md~obsidian/Docu
 alias start_ml="start_conda && conda activate machine_learning"
 alias gvim="lvim"
 
+alias jcode='run_vscode_profile --profile=java '
+alias mcode='run_vscode_profile --profile=misc '
+alias pcode='run_vscode_profile --profile=python '
+alias ccode='run_vscode_profile --profile=c '
+alias comcode='build_vscode_settings && code --user-data-dir="$HOME/.config/vscode-profiles/common/data" --extensions-dir="$HOME/.config/vscode-profiles/common/extensions"'
+alias wcode='run_vscode_profile --profile=web '
+
 # ssh
 # alias login_ssh="ssh $SSH_USER@$SSH_HOST"
 

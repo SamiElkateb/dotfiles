@@ -1,18 +1,15 @@
--- local filepath = vim.api.nvim_buf_get_name(0):gsub(" ", "\\ ");
-
-
--- vim.api.nvim_command(':! echo ' ..filepath)
--- vim.api.nvim_command(':10TermExec open=0 cmd="zathura ' .. filepath .. '"')
-
+-- require'lspconfig'.racket_langserver.setup{}
+local opts = {}
+require("lvim.lsp.manager").setup("racket_langserver", opts)
+-- require'lspconfig'.racket_langserver.try_add()
 
 vim.api.nvim_create_user_command(
-  'PdfOpen',
+  'RacketRun',
   function()
     local filepath = vim.api.nvim_buf_get_name(0)
     local dirpath = filepath:match("(.*/)")
-    local filename = filepath:sub(1, -5)
-    vim.api.nvim_command(':! cd ' ..
-      dirpath .. ' && zathura ' .. filename .. '.pdf &')
+    local command = 'racket ' .. filepath
+    vim.api.nvim_command(':9TermExec cmd="cd ' .. dirpath .. ' && ' .. command .. '" <cr>')
   end,
   {}
 )
@@ -33,11 +30,9 @@ local opts = {
 
 local mappings = {
   j = {
-    name = "Pdf",
-    o = { "<Cmd>PdfOpen<CR><CR>", "Open" },
+    name = "Racket",
+    b = { "<Cmd>RacketRun<CR>", "Run" },
   },
 }
 
 which_key.register(mappings, opts)
-
-vim.api.nvim_command("PdfOpen")

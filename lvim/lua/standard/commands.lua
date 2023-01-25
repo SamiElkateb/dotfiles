@@ -31,7 +31,7 @@ vim.api.nvim_create_user_command(
           " && sed -i '' 's/App/" .. MainClassName .. "/g' App.java && mv App.java " .. MainClassName .. ".java"
     end
     -- vim.api.nvim_command(':!' .. command .. ' && cd ' .. artifactId .. ' && ' .. addPropertiesCommand  .. ' && ' .. addBuildCommand .. renameMainClass)
-    vim.api.nvim_command(':!' .. command .. ' && cd ' .. artifactId .. ' && ' .. addPropertiesCommand  .. renameMainClass)
+    vim.api.nvim_command(':!' .. command .. ' && cd ' .. artifactId .. ' && ' .. addPropertiesCommand .. renameMainClass)
   end,
   { force = true, nargs = 1 }
 )
@@ -62,6 +62,10 @@ vim.api.nvim_create_user_command(
 
 vim.api.nvim_create_user_command('JavaBuildAndRun',
   ':9TermExec cmd="mvn -q clean compile exec:java"'
+  , options)
+
+vim.api.nvim_create_user_command('JavaRunTests',
+  ':9TermExec cmd="mvn -q test"'
   , options)
 
 
@@ -156,3 +160,4 @@ if toggleterm_status then
   }
   which_key.register(mappings, opts)
 end
+

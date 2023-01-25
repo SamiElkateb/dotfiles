@@ -42,6 +42,7 @@ local mappings = {
     u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
     b = { "<Cmd>JavaBuildAndRun<CR>", "Build and Run" },
     i = { "<Cmd>MavenInstallDependencies<CR>", "Maven Install Dependencies" },
+    t = { "<Cmd>JavaRunTests<CR>", "Maven Run Tests" },
   },
   d = {
     j = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
@@ -65,7 +66,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
-  vim.notify("FTPLUGIN: cmp_nvm_lsp not found")
+  -- vim.notify("FTPLUGIN: cmp_nvm_lsp not found")
   return
 end
 capabilities.textDocument.completion.completionItem.snippetSupport = false
@@ -78,7 +79,7 @@ end
 
 local status, jdtls = pcall(require, "jdtls")
 if not status then
-  vim.notify("FTPLUGIN: jdtls not found")
+  -- vim.notify("FTPLUGIN: jdtls not found")
   return
 end
 
@@ -104,10 +105,10 @@ local vscode_java_test = "/.config/lvim/.vscode-java-test/server/*.jar"
 -- Determine OS
 local home = os.getenv "HOME"
 if vim.fn.has "mac" == 1 then
-  WORKSPACE_PATH = home .. "/workspace/"
+  WORKSPACE_PATH = home .. "/workspace/java-lsp/"
   CONFIG = "mac"
 elseif vim.fn.has "unix" == 1 then
-  WORKSPACE_PATH = home .. "/workspace/"
+  WORKSPACE_PATH = home .. "/workspace/java-lsp/"
   CONFIG = "linux"
 else
   print "Unsupported system"

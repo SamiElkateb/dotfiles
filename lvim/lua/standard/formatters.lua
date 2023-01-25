@@ -4,4 +4,9 @@ local formatters = require "lvim.lsp.null-ls.formatters"
 -- MacOs : brew install google-java-format
 formatters.setup {
   { command = "google_java_format", filetypes = { "java" } },
+  { command = "prettier", filetypes = { "javascript" } },
+}
+
+formatters.setup {
+  { command = "raco_fmt", filetypes = { "scheme", "racket" } },
 }
