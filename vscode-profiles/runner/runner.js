@@ -3,6 +3,8 @@ const fs = require("fs");
 const path = require("path");
 const { execFileSync, exec, execSync } = require("child_process");
 
+// exec(`osascript -e 'display notification "STARTED" with title "VSCODE"'`);
+
 const filenameToJSON = (filename) => {
   const filePath = path.join(__dirname, filename);
   const fileString = fs.readFileSync(filePath, "utf8");
@@ -26,7 +28,18 @@ const parseArgs = (argv) => {
 };
 
 try {
+  const code =
+    "/Applications/Visual\\ Studio\\ Code.app/Contents/Resources/app/bin/code";
   const args = parseArgs(process.argv);
+  const cache = filenameToJSON("cache.json");
+  if (args.lang) {
+    cache.lang = args.lang;
+    const cachePrettyString = `${JSON.stringify(cache, null, "\t")}\n`;
+    const cachePath = path.join(__dirname, "./cache.json");
+    fs.writeFileSync(cachePath, cachePrettyString);
+  } else {
+    args.lang = cache.lang;
+  }
 
   const settingsBuilderPath = path.join(__dirname, "../settings/builder.js");
   execFileSync(settingsBuilderPath, [`--profile=${args.lang}`]);
@@ -46,8 +59,13 @@ try {
     (acc, curr) => acc + `--disable-extension ${curr} `,
     ""
   );
-  const openFolder = args.openFolder ? '.' : '';
-  const command = `code --user-data-dir="$HOME/.config/vscode-profiles/common/data" --extensions-dir="$HOME/.config/vscode-profiles/common/extensions" ${disabledExtensions} ${openFolder}`;
+  const openFolder = args.openFolder ? "." : "";
+  const command = `${code} --user-data-dir="$HOME/.config/vscode-profiles/common/data" --extensions-dir="$HOME/.config/vscode-profiles/common/extensions" ${disabledExtensions} ${openFolder}`;
+
+  const commandPath = path.join(__dirname, "./command.sh");
+  // const script = `#!/bin/bash\n${command}`;
+  // fs.writeFileSync(commandPath, script);
+  console.log(command);
   exec(command);
 } catch (err) {
   console.error(err);

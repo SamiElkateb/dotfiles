@@ -20,7 +20,7 @@ const parseArgs = (argv) => {
 
 try {
   const base = filenameToJSON("base.json");
-  const vim = filenameToJSON("vim.json");
+  // const vim = filenameToJSON("vim.json");
 
   const profileSettingsName = parseArgs(process.argv);
   const profileSettings = profileSettingsName
@@ -29,7 +29,7 @@ try {
 
   const settings = {
     ...base,
-    ...vim,
+    // ...vim,
     ...profileSettings,
   };
 

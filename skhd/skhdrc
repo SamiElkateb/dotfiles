@@ -32,7 +32,8 @@ alt + shift - up : yabai -m window --swap north || $(yabai -m window --display n
 alt + shift - right : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
 
 # close focused window
-cmd + shift - w : yabai -m window --close
+# cmd + shift - w : yabai -m window --close
+
 #fullscreen
 cmd + shift - f : yabai -m window --toggle zoom-fullscreen
 # move focused window to next/prev workspace
@@ -50,3 +51,13 @@ cmd + shift - f : yabai -m window --toggle zoom-fullscreen
 cmd - return : open -n /Applications/Alacritty.app
 # cmd - f : open -n /Applications/Firefox.app
 # cmd - t : open -n /Applications/Tor Browser.app
+
+cmd + shift - w : skhd -k "cmd - q"
+
+cmd + shift - return : osascript -e 'do shell script "$HOME/.config/vscode-profiles/runner/script.sh"'
+
+# cmd + shift - w [
+#   "*" : cmd + shift - w : yabai -m window --close
+#   "/Applications/Visual\ Studio\ Code":  skhd -k "cmd - q"
+# ]
+

@@ -1,1 +1,7 @@
-[]
+[
+  "ms-vscode.cpptools",
+  "ms-vscode.cpptools-themes",
+  "ms-vscode.cmake-tools",
+  "twxs.cmake",
+  "formulahendry.code-runner"
+]

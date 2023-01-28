@@ -19,5 +19,12 @@
     "paths": [],
     "tags": [],
     "enabled": true
+  },
+  {
+    "name": "latex-templates",
+    "rootPath": "/Users/Sami/workspace/latex-templates",
+    "paths": [],
+    "tags": [],
+    "enabled": true
   }
 ]
