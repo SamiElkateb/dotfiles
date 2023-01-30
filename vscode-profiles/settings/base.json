@@ -28,9 +28,5 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "code-runner.clearPreviousOutput": true,
-  "code-runner.executorMap": {
-    "c": "make run"
-  },
   "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/vscode-profiles/settings/init.vim"
 }

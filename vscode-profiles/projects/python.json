@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "name": "python-playground",
+    "rootPath": "/Users/Sami/workspace/playground/python-playground",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  }
+]

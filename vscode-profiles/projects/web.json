@@ -5,5 +5,12 @@
 		"paths": [],
 		"tags": [],
 		"enabled": true
-	}
+	},
+  {
+    "name": "web-playground",
+    "rootPath": "/Users/Sami/workspace/playground/web-playground",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  }
 ]

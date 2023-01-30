@@ -47,6 +47,9 @@ try {
   const projectBuilderPath = path.join(__dirname, "../projects/builder.js");
   execFileSync(projectBuilderPath, [`--profile=${args.lang}`]);
 
+  const keybindingsBuilderPath = path.join(__dirname, "../keybindings/builder.js");
+  execFileSync(keybindingsBuilderPath, [`--profile=${args.lang}`]);
+
   const extensionDisablerPath = path.join(
     __dirname,
     "../extensions/disabler.js"

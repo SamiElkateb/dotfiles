@@ -9,18 +9,45 @@ nnoremap <Leader>e <Cmd>call VSCodeNotify("workbench.action.toggleSidebarVisibil
 
 nnoremap <Leader>zen <Cmd>call VSCodeNotify("workbench.action.toggleZenMode")<CR>
 
+xmap gc  <Plug>VSCodeCommentary
+nmap gc  <Plug>VSCodeCommentary
+omap gc  <Plug>VSCodeCommentary
+nmap gcc <Plug>VSCodeCommentaryLine
+
 nnoremap gr <Cmd>call VSCodeNotify("editor.action.goToReferences")<CR>
 nnoremap gs <Cmd>call VSCodeNotify("workbench.action.gotoSymbol")<CR>
 
 nnoremap <S-l> <Cmd>call VSCodeNotify("workbench.action.nextEditor")<CR>
 nnoremap <S-h> <Cmd>call VSCodeNotify("workbench.action.previousEditor")<CR>
 
+nnoremap <Leader>sf <Cmd>call VSCodeNotify("search.action.focusQueryEditorWidget")<CR>
 
-nnoremap <Leader>lf <Cmd>call VSCodeNotify("editor.action.formatDocument")<CR>
+
+
+" LSP
 nnoremap <Leader>la <Cmd>call VSCodeNotify("editor.action.quickFix")<CR>
-nnoremap <Leader>lb <Cmd>call VSCodeNotify("code-runner.run")<CR>
+nnoremap <Leader>lr <Cmd>call VSCodeNotify("editor.action.rename")<CR>
 nnoremap <Leader>lj <Cmd>call VSCodeNotify("editor.action.marker.nextInFiles")<CR>
 nnoremap <Leader>lk <Cmd>call VSCodeNotify("editor.action.marker.prevInFiles")<CR>
 
+nnoremap <Leader>ls <Cmd>call VSCodeNotify("breadcrumbs.focusAndSelect")<CR>
 
 
+
+nnoremap <Leader>lf <Cmd>call VSCodeNotify("editor.action.formatDocument")<CR>
+
+let s:barkState = 0
+function ToggleBark ()
+    if s:barkState == 0
+        let s:barkState = 1
+        call VSCodeNotify("wolf.barkAtCurrentFile")
+    else
+        let s:barkState = 0
+        call VSCodeNotify("wolf.stopBarking")
+    endif
+endfunction
+
+nnoremap <Leader>lb <Cmd> :call ToggleBark()<CR>
+" nnoremap <Leader>lt <Cmd>call VSCodeNotify("testing.runAll")<CR>
+nnoremap <Leader>lt <Cmd>call VSCodeNotify('workbench.action.terminal.toggleTerminal')<CR><Cmd> call VSCodeNotify('workbench.action.terminal.sendSequence', {"text": "pytest\u000D"} )<CR>
+nnoremap <Leader>ll <Cmd>call VSCodeNotify("python.runLinting")<CR>

@@ -14,6 +14,8 @@ alias comcode='build_vscode_settings && code --user-data-dir="$HOME/.config/vsco
 alias wcode='run_vscode_profile --profile=web '
 
 
+alias python='python3'
+alias pip='pip3'
 
 # ssh
 # alias login_ssh="ssh $SSH_USER@$SSH_HOST"

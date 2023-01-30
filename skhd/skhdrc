@@ -48,6 +48,7 @@ cmd + shift - f : yabai -m window --toggle zoom-fullscreen
 # alt + shift - 9 : yabai -m window --space 9
 
 
+cmd + shift - m : open -n /System/Applications/Music.app
 cmd - return : open -n /Applications/Alacritty.app
 # cmd - f : open -n /Applications/Firefox.app
 # cmd - t : open -n /Applications/Tor Browser.app
@@ -57,7 +58,6 @@ cmd + shift - w : skhd -k "cmd - q"
 cmd + shift - return : osascript -e 'do shell script "$HOME/.config/vscode-profiles/runner/script.sh"'
 
 # cmd + shift - w [
-#   "*" : cmd + shift - w : yabai -m window --close
 #   "/Applications/Visual\ Studio\ Code":  skhd -k "cmd - q"
+#   * : yabai -m window --close
 # ]
-

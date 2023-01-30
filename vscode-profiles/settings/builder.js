@@ -2,9 +2,13 @@
 const fs = require("fs");
 const path = require("path");
 
+const openLocalFile = (localPath)=> {
+  const filePath = path.join(__dirname, localPath);
+  return fs.readFileSync(filePath, "utf8");
+}
+
 const filenameToJSON = (filename) => {
-  const filePath = path.join(__dirname, filename);
-  const fileString = fs.readFileSync(filePath, "utf8");
+  const fileString = openLocalFile(filename);
   return JSON.parse(fileString);
 };
 
@@ -19,13 +23,19 @@ const parseArgs = (argv) => {
 };
 
 try {
+  const vimBase = openLocalFile("./vim/base.vim");
+
   const base = filenameToJSON("base.json");
   // const vim = filenameToJSON("vim.json");
 
-  const profileSettingsName = parseArgs(process.argv);
-  const profileSettings = profileSettingsName
-    ? filenameToJSON(profileSettingsName)
+  const profileName = parseArgs(process.argv);
+  const profileSettings = profileName
+    ? filenameToJSON(profileName)
     : {};
+
+  const profileVim = profileName
+    ? openLocalFile(`vim/ftplugin/${profileName.replace('.json', '.vim')}`)
+    : '';
 
   const settings = {
     ...base,
@@ -35,8 +45,11 @@ try {
 
   const settingsPrettyString = `${JSON.stringify(settings, null, '\t')}\n`;
   const settingsPath = path.join(__dirname, "../common/data/User/settings.json");
-
   fs.writeFileSync(settingsPath, settingsPrettyString);
+
+  const vimPath = path.join(__dirname, "./init.vim");
+  const vimString = `${vimBase}\n${profileVim}`;
+  fs.writeFileSync(vimPath, vimString);
 
   // yes | cp "$HOME/.config/vscode-profiles/settings/settings.json" "$HOME/.config/vscode-profiles/common/data/User/settings.json" 
 } catch (err) {

@@ -1,111 +1,149 @@
 [
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusPreviousGroup",
-    "when": "!sideBarVisible"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusSideBar",
-    "when": "sideBarVisible"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.focusNextGroup"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.nextSideBarView",
-    "when": "sideBarFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "workbench.action.previousSideBarView",
-    "when": "sideBarFocus"
-  },
-  {
-    "key": "tab",
-    "command": "workbench.action.quickOpenNavigateNext",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "shift+tab",
-    // should work but runs the selection immediately
-    "command": "workbench.action.quickOpenNavigatePrevious",
-    // "command": "list.focusUp",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "ctrl+p",
-    "command": "workbench.action.quickOpen"
-  },
-  {
-    "key": "ctrl+t",
-    "command": "workbench.action.terminal.toggleTerminal"
-  },
-  {
-    "key": "enter",
-    "command": "list.select",
-    "when": "listFocus && !inputFocus && explorerViewletFocus"
-  },
-  {
-    "key": "r",
-    "command": "renameFile",
-    "when": "listFocus && !inputFocus && explorerViewletFocus"
-  },
-  {
-    "key": "d",
-    "command": "deleteFile",
-    "when": "listFocus && !inputFocus && explorerViewletFocus"
-  },
-  {
-    "key": "a",
-    "command": "explorer.newFile",
-    "when": "listFocus && !inputFocus && explorerViewletFocus"
-  },
-  {
-    "key": "alt+p",
-    "command": "markdown.showPreview",
-    "when": "editorLangId == markdown && vim.mode == 'Normal'"
-  },
-  {
-    "key": "alt+p",
-    "command": "latex-workshop.view",
-    "when": "editorLangId == latex && vim.mode == 'Normal'"
-  },
-  {
-    "key": "alt+p",
-    "command": "plantuml.preview",
-    "when": "editorLangId == plantuml && vim.mode == 'Normal'"
-  },
-  {
-    "key": "alt+b",
-    "command": "latex-workshop.build",
-    "when": "editorLangId == latex && vim.mode == 'Normal'"
-  },
-  {
-    "key": "alt+b",
-    "command": "code-runner.run",
-    "when": "editorLangId == c && vim.mode == 'Normal'"
-  },
-  {
-    "key": "ctrl+down",
-    "command": "workbench.action.decreaseViewSize"
-  },
-  {
-    "key": "ctrl+up",
-    "command": "workbench.action.increaseViewSize"
-  },
-  {
-    "command": "vscode-neovim.compositeEscape1",
-    "key": "k",
-    "when": "neovim.mode == insert && editorTextFocus",
-    "args": "k"
-  },
-  {
-    "command": "vscode-neovim.compositeEscape2",
-    "key": "j",
-    "when": "neovim.mode == insert && editorTextFocus",
-    "args": "j"
-  }
+	{
+		"key": "enter",
+		"command": "list.select",
+		"when": "listFocus && !inputFocus && explorerViewletFocus"
+	},
+	{
+		"key": "alt+p",
+		"command": "markdown.showPreview",
+		"when": "editorLangId == markdown && vim.mode == 'Normal'"
+	},
+	{
+		"key": "alt+p",
+		"command": "latex-workshop.view",
+		"when": "editorLangId == latex && vim.mode == 'Normal'"
+	},
+	{
+		"key": "alt+p",
+		"command": "plantuml.preview",
+		"when": "editorLangId == plantuml && vim.mode == 'Normal'"
+	},
+	{
+		"key": "alt+b",
+		"command": "latex-workshop.build",
+		"when": "editorLangId == latex && vim.mode == 'Normal'"
+	},
+	{
+		"key": "alt+b",
+		"command": "code-runner.run",
+		"when": "editorLangId == c && vim.mode == 'Normal'"
+	},
+	{
+		"command": "vscode-neovim.compositeEscape1",
+		"key": "k",
+		"when": "neovim.mode == insert && editorTextFocus",
+		"args": "k"
+	},
+	{
+		"command": "vscode-neovim.compositeEscape2",
+		"key": "j",
+		"when": "neovim.mode == insert && editorTextFocus",
+		"args": "j"
+	},
+	{
+		"key": "l",
+		"command": "breadcrumbs.focusNext",
+		"when": "breadcrumbsActive && breadcrumbsVisible"
+	},
+	{
+		"key": "h",
+		"command": "breadcrumbs.focusPrevious",
+		"when": "breadcrumbsActive && breadcrumbsVisible"
+	},
+	{
+		"key": "tab",
+		"command": "workbench.action.quickOpenNavigateNext",
+		"when": "inQuickOpen"
+	},
+	{
+		"key": "shift+tab",
+		"command": "workbench.action.quickOpenNavigatePrevious",
+		"when": "inQuickOpen"
+	},
+	{
+		"key": "ctrl+p",
+		"command": "workbench.action.quickOpen"
+	},
+	{
+		"key": "r",
+		"command": "renameFile",
+		"when": "listFocus && !inputFocus && explorerViewletFocus"
+	},
+	{
+		"key": "d",
+		"command": "deleteFile",
+		"when": "listFocus && !inputFocus && explorerViewletFocus"
+	},
+	{
+		"key": "a",
+		"command": "explorer.newFile",
+		"when": "listFocus && !inputFocus && explorerViewletFocus"
+	},
+	{
+		"key": "ctrl+h",
+		"command": "workbench.action.focusPreviousGroup",
+		"when": "!sideBarVisible"
+	},
+	{
+		"key": "ctrl+h",
+		"command": "workbench.action.focusSideBar",
+		"when": "sideBarVisible"
+	},
+	{
+		"key": "ctrl+l",
+		"command": "workbench.action.focusNextGroup"
+	},
+	{
+		"key": "ctrl+j",
+		"command": "workbench.action.nextSideBarView",
+		"when": "sideBarFocus"
+	},
+	{
+		"key": "ctrl+k",
+		"command": "workbench.action.previousSideBarView",
+		"when": "sideBarFocus"
+	},
+	{
+		"key": "ctrl+t",
+		"command": "workbench.action.terminal.toggleTerminal"
+	},
+	{
+		"key": "ctrl+down",
+		"command": "workbench.action.decreaseViewSize"
+	},
+	{
+		"key": "ctrl+up",
+		"command": "workbench.action.increaseViewSize"
+	},
+	{
+		"key": "tab",
+		"command": "selectNextSuggestion",
+		"when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+	},
+	{
+		"key": "shift+tab",
+		"command": "selectPrevSuggestion",
+		"when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+	},
+	{
+		"key": "enter",
+		"command": "acceptSelectedSuggestion",
+		"when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "focusSuggestion",
+		"when": "suggestWidgetVisible && textInputFocus && !config.editor.suggest.selectQuickSuggestions && !suggestWidgetHasFocusedSuggestion"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "toggleSuggestionDetails",
+		"when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "editor.action.triggerSuggest",
+		"when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+	}
 ]

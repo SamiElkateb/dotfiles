@@ -12,5 +12,12 @@
 		"paths": [],
 		"tags": [],
 		"enabled": true
-	}
+	},
+  {
+    "name": "java-playground",
+    "rootPath": "/Users/Sami/workspace/playground/java-playground",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  }
 ]
