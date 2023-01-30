@@ -38,6 +38,9 @@
 !vscode-profiles
 !vscode-profiles/settings
 !vscode-profiles/settings/*
+!vscode-profiles/settings/vim
+!vscode-profiles/settings/vim/*
+!vscode-profiles/settings/vim/ftplugin/*
 !vscode-profiles/runner
 !vscode-profiles/runner/*.js
 !vscode-profiles/runner/*.json

@@ -24,6 +24,7 @@ const parseArgs = (argv) => {
 
 try {
   const vimBase = openLocalFile("./vim/base.vim");
+  const vimFunctions = openLocalFile("./vim/functions.vim");
 
   const base = filenameToJSON("base.json");
   // const vim = filenameToJSON("vim.json");
@@ -36,6 +37,8 @@ try {
   const profileVim = profileName
     ? openLocalFile(`vim/ftplugin/${profileName.replace('.json', '.vim')}`)
     : '';
+  
+  const initVim = [vimBase, vimFunctions, profileVim];
 
   const settings = {
     ...base,
@@ -48,7 +51,7 @@ try {
   fs.writeFileSync(settingsPath, settingsPrettyString);
 
   const vimPath = path.join(__dirname, "./init.vim");
-  const vimString = `${vimBase}\n${profileVim}`;
+  const vimString = initVim.join('\n');
   fs.writeFileSync(vimPath, vimString);
 
   // yes | cp "$HOME/.config/vscode-profiles/settings/settings.json" "$HOME/.config/vscode-profiles/common/data/User/settings.json" 
