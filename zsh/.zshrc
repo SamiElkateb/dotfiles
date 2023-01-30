@@ -42,7 +42,7 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
 
 terminal=$(which_term)
-if [ "$terminal"=="alacritty" ]; then
+if [ "$terminal" = "alacritty" ]; then
   neofetch
 fi
 
