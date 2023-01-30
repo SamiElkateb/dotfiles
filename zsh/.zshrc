@@ -11,7 +11,6 @@ stty stop undef		# Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
 unsetopt BEEP
 
-
 # completions
 autoload -Uz compinit
 zstyle ':completion:*' menu select
@@ -42,4 +41,8 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
 
+terminal=$(which_term)
+if [ "$terminal"=="alacritty" ]; then
+  neofetch
+fi
 

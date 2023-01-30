@@ -39,11 +39,14 @@
 !vscode-profiles/settings
 !vscode-profiles/settings/*
 !vscode-profiles/runner
-!vscode-profiles/runner/*
+!vscode-profiles/runner/*.js
+!vscode-profiles/runner/*.json
 !vscode-profiles/projects
-!vscode-profiles/projects/*.json
+!vscode-profiles/projects/*.js
 !vscode-profiles/extensions
 !vscode-profiles/extensions/*
+!vscode-profiles/keybindings
+!vscode-profiles/keybindings/*
 !vscode-profiles/common/
 !vscode-profiles/common/data
 !vscode-profiles/common/data/User

@@ -20,10 +20,6 @@ nnoremap gs <Cmd>call VSCodeNotify("workbench.action.gotoSymbol")<CR>
 nnoremap <S-l> <Cmd>call VSCodeNotify("workbench.action.nextEditor")<CR>
 nnoremap <S-h> <Cmd>call VSCodeNotify("workbench.action.previousEditor")<CR>
 
-nnoremap <Leader>sf <Cmd>call VSCodeNotify("search.action.focusQueryEditorWidget")<CR>
-
-
-
 " LSP
 nnoremap <Leader>la <Cmd>call VSCodeNotify("editor.action.quickFix")<CR>
 nnoremap <Leader>lr <Cmd>call VSCodeNotify("editor.action.rename")<CR>
@@ -34,20 +30,12 @@ nnoremap <Leader>ls <Cmd>call VSCodeNotify("breadcrumbs.focusAndSelect")<CR>
 
 
 
+
 nnoremap <Leader>lf <Cmd>call VSCodeNotify("editor.action.formatDocument")<CR>
 
-let s:barkState = 0
-function ToggleBark ()
-    if s:barkState == 0
-        let s:barkState = 1
-        call VSCodeNotify("wolf.barkAtCurrentFile")
-    else
-        let s:barkState = 0
-        call VSCodeNotify("wolf.stopBarking")
-    endif
-endfunction
 
-nnoremap <Leader>lb <Cmd> :call ToggleBark()<CR>
-" nnoremap <Leader>lt <Cmd>call VSCodeNotify("testing.runAll")<CR>
-nnoremap <Leader>lt <Cmd>call VSCodeNotify('workbench.action.terminal.toggleTerminal')<CR><Cmd> call VSCodeNotify('workbench.action.terminal.sendSequence', {"text": "pytest\u000D"} )<CR>
-nnoremap <Leader>ll <Cmd>call VSCodeNotify("python.runLinting")<CR>
+nnoremap <Leader>lb <Cmd>call VSCodeNotify('workbench.action.terminal.toggleTerminal')<CR><Cmd> call VSCodeNotify('workbench.action.terminal.sendSequence', {"text": "make run\u000D"} )<CR>
+nnoremap <Leader>lt <Cmd>call VSCodeNotify('workbench.action.terminal.toggleTerminal')<CR><Cmd> call VSCodeNotify('workbench.action.terminal.sendSequence', {"text": "make test\u000D"} )<CR>
+
+" nnoremap <Leader>ls <Cmd>call VSCodeNotify("wolf.stopBarking")<CR>
+" nnoremap <Leader>ll <Cmd>call VSCodeNotify("python.runLinting")<CR>

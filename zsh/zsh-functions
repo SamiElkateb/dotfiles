@@ -6,6 +6,7 @@ function zsh_add_file() {
     [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
 }
 
+
 function zsh_add_plugin() {
     PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
     if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
@@ -179,4 +180,25 @@ function stop_focus(){
     defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/WebPomodoro.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
     killapps "remove-focus"
     block_sites "unblock"
+}
+function which_term(){
+   term=$(ps -p $(ps -p $$ -o ppid=) -o args=);
+   found=0;
+   case $term in
+       *Visual\ Studio\ Code*)
+           found=1
+           echo "vscode"
+           ;;
+       *nvim*)
+           found=1
+           echo "nvim"
+           ;;
+       *Alacritty*)
+           found=1
+           echo "alacritty"
+           ;;
+       *)
+   esac
+   [ $found -eq 0 ] && echo "$term "
+   return 0;
 }
