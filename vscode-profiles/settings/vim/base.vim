@@ -28,4 +28,6 @@ nnoremap <Leader>lk <Cmd>call VSCodeNotify("editor.action.marker.prevInFiles")<C
 
 nnoremap <Leader>ls <Cmd>call VSCodeNotify("breadcrumbs.focusAndSelect")<CR>
 
-
+nnoremap <Leader>sf <Cmd>call VSCodeNotify("find-it-faster.findWithinFiles")<CR>
+"  nnoremap <Leader>sf <Cmd>call FuzzyFind()<CR>
+"  nnoremap <C-h> <Cmd>call FuzzyFindOpen() <CR>

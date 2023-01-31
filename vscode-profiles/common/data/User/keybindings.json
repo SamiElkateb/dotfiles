@@ -52,6 +52,26 @@
 		"when": "breadcrumbsActive && breadcrumbsVisible"
 	},
 	{
+		"key": "w",
+		"command": "breadcrumbs.focusNext",
+		"when": "breadcrumbsActive && breadcrumbsVisible"
+	},
+	{
+		"key": "b",
+		"command": "breadcrumbs.focusPrevious",
+		"when": "breadcrumbsActive && breadcrumbsVisible"
+	},
+	{
+		"key": "ctrl+k",
+		"command": "breadcrumbs.focusAndSelect",
+		"when": "breadcrumbsVisible && editorFocus"
+	},
+	{
+		"key": "ctrl+j",
+		"command": "workbench.action.focusActiveEditorGroup",
+		"when": "breadcrumbsActive && breadcrumbsVisible"
+	},
+	{
 		"key": "tab",
 		"command": "workbench.action.quickOpenNavigateNext",
 		"when": "inQuickOpen"
@@ -87,8 +107,18 @@
 	},
 	{
 		"key": "ctrl+h",
+		"command": "workbench.action.focusPreviousGroup",
+		"when": "activeEditorGroupIndex != 1"
+	},
+	{
+		"key": "ctrl+h",
 		"command": "workbench.action.focusSideBar",
-		"when": "sideBarVisible"
+		"when": "sideBarVisible && activeEditorGroupIndex == 1"
+	},
+	{
+		"key": "ctrl+h",
+		"command": "workbench.action.focusSideBar",
+		"when": "activeEditorGroupEmpty"
 	},
 	{
 		"key": "ctrl+l",
@@ -103,10 +133,6 @@
 		"key": "ctrl+k",
 		"command": "workbench.action.previousSideBarView",
 		"when": "sideBarFocus"
-	},
-	{
-		"key": "ctrl+t",
-		"command": "workbench.action.terminal.toggleTerminal"
 	},
 	{
 		"key": "ctrl+down",
@@ -145,5 +171,25 @@
 		"key": "ctrl+i",
 		"command": "editor.action.triggerSuggest",
 		"when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+t",
+		"command": "workbench.action.terminal.toggleTerminal"
+	},
+	{
+		"key": "ctrl+j",
+		"command": "workbench.action.terminal.focus",
+		"when": "terminalIsOpen && editorFocus"
+	},
+	{
+		"key": "ctrl+k",
+		"command": "workbench.action.focusActiveEditorGroup",
+		"when": "terminalFocus && view != FindItFaster && viewItem != FindItFaster && webviewId != FindItFaster"
+	},
+	{
+		"command": "vscode-neovim.send",
+		"key": "enter",
+		"when": "terminalFocus",
+		"args": "<C-h>"
 	}
 ]

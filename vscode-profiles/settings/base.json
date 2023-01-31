@@ -7,20 +7,18 @@
   "workbench.layoutControl.enabled": false,
   "editor.minimap.enabled": false,
   "telemetry.telemetryLevel": "off",
-  "peacock.affectStatusBar": false,
-  "peacock.affectSashHover": false,
-  "peacock.affectActivityBar": false,
   "workbench.iconTheme": "material-icon-theme",
   "material-icon-theme.activeIconPack": "react",
   "material-icon-theme.opacity": 0.6,
   "material-icon-theme.saturation": 0.8,
   "zenMode.hideLineNumbers": false,
   "projectManager.cacheProjectsBetweenSessions": false,
+  "projectManager.removeCurrentProjectFromList": true,
   "terminal.integrated.enablePersistentSessions": false,
-  "workbench.startupEditor": "welcomePage",
-  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.startupEditor": "none",
   "window.restoreWindows": "none",
-  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.editor.enablePreview": true,
   "files.hotExit": "off",
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -28,5 +26,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/vscode-profiles/settings/init.vim"
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/vscode-profiles/settings/init.vim",
+  "latex-workshop.latex.autoClean.run": "onBuilt"
 }

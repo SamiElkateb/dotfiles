@@ -28,6 +28,7 @@ const parseArgs = (argv) => {
 };
 
 try {
+  fs.rmdirSync(path.join(__dirname, "../common/data/User/workspaceStorage"), {recursive: true, force: true});
   const code =
     "/Applications/Visual\\ Studio\\ Code.app/Contents/Resources/app/bin/code";
   const args = parseArgs(process.argv);

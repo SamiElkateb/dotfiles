@@ -38,7 +38,7 @@ try {
     ? openLocalFile(`vim/ftplugin/${profileName.replace('.json', '.vim')}`)
     : '';
   
-  const initVim = [vimBase, vimFunctions, profileVim];
+  const initVim = [ vimFunctions, vimBase, profileVim];
 
   const settings = {
     ...base,

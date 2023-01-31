@@ -1,0 +1,22 @@
+[
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focus",
+    "when": "terminalIsOpen && editorFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus && view != FindItFaster && viewItem != FindItFaster && webviewId != FindItFaster"
+  },
+  {
+    "command": "vscode-neovim.send",
+    "key": "enter",
+    "when": "terminalFocus",
+    "args": "<C-h>"
+  }
+]

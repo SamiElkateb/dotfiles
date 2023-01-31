@@ -30,6 +30,7 @@ try {
   const explorer = filenameToJSON("explorer.json");
   const navigation = filenameToJSON("navigation.json");
   const suggests = filenameToJSON("suggests.json");
+  const terminal = filenameToJSON("terminal.json");
 
   // const profileName = parseArgs(process.argv);
   // const profileSettings = profileName
@@ -42,7 +43,8 @@ try {
     ...commandPalette,
     ...explorer,
     ...navigation,
-    ...suggests
+    ...suggests,
+    ...terminal
     // ...profileSettings,
   ];
 

@@ -8,5 +8,25 @@
     "key": "h",
     "command": "breadcrumbs.focusPrevious",
     "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "w",
+    "command": "breadcrumbs.focusNext",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "b",
+    "command": "breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "breadcrumbs.focusAndSelect",
+    "when": "breadcrumbsVisible && editorFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
   }
 ]

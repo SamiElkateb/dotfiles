@@ -6,8 +6,18 @@
   },
   {
     "key": "ctrl+h",
+    "command": "workbench.action.focusPreviousGroup",
+    "when": "activeEditorGroupIndex != 1"
+  },
+  {
+    "key": "ctrl+h",
     "command": "workbench.action.focusSideBar",
-    "when": "sideBarVisible"
+    "when": "sideBarVisible && activeEditorGroupIndex == 1"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusSideBar",
+    "when": "activeEditorGroupEmpty"
   },
   {
     "key": "ctrl+l",
@@ -22,10 +32,6 @@
     "key": "ctrl+k",
     "command": "workbench.action.previousSideBarView",
     "when": "sideBarFocus"
-  },
-  {
-    "key": "ctrl+t",
-    "command": "workbench.action.terminal.toggleTerminal"
   },
   {
     "key": "ctrl+down",
