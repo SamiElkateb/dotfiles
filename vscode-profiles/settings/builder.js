@@ -27,6 +27,7 @@ try {
   const vimFunctions = openLocalFile("./vim/functions.vim");
 
   const base = filenameToJSON("base.json");
+  const latex = filenameToJSON("latex.json");
   // const vim = filenameToJSON("vim.json");
 
   const profileName = parseArgs(process.argv);
@@ -41,6 +42,7 @@ try {
   const initVim = [ vimFunctions, vimBase, profileVim];
 
   const settings = {
+    ...latex,
     ...base,
     // ...vim,
     ...profileSettings,

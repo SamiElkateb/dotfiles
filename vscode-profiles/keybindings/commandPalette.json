@@ -11,6 +11,16 @@
   },
   {
     "key": "ctrl+p",
-    "command": "workbench.action.quickOpen"
+    "command": "workbench.action.quickOpen",
+    "when": "workbenchState != empty"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "workbench.action.showAllSymbols"
+  },
+  {
+    "command":"projectManager.listProjects",
+    "key":"ctrl+p",
+    "when": "workbenchState == empty"
   }
 ]

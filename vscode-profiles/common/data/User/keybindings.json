@@ -83,7 +83,17 @@
 	},
 	{
 		"key": "ctrl+p",
-		"command": "workbench.action.quickOpen"
+		"command": "workbench.action.quickOpen",
+		"when": "workbenchState != empty"
+	},
+	{
+		"key": "ctrl+s",
+		"command": "workbench.action.showAllSymbols"
+	},
+	{
+		"command": "projectManager.listProjects",
+		"key": "ctrl+p",
+		"when": "workbenchState == empty"
 	},
 	{
 		"key": "r",
@@ -114,6 +124,11 @@
 		"key": "ctrl+h",
 		"command": "workbench.action.focusSideBar",
 		"when": "sideBarVisible && activeEditorGroupIndex == 1"
+	},
+	{
+		"key": "ctrl+h",
+		"command": "workbench.action.focusSideBar",
+		"when": "terminalFocus && !terminalTabsFocus"
 	},
 	{
 		"key": "ctrl+h",
@@ -179,17 +194,44 @@
 	{
 		"key": "ctrl+j",
 		"command": "workbench.action.terminal.focus",
-		"when": "terminalIsOpen && editorFocus"
+		"when": "terminalIsOpen && editorFocus && !terminalTabsFocus"
 	},
 	{
 		"key": "ctrl+k",
 		"command": "workbench.action.focusActiveEditorGroup",
-		"when": "terminalFocus && view != FindItFaster && viewItem != FindItFaster && webviewId != FindItFaster"
+		"when": "terminalFocus && !terminalTabsFocus"
 	},
 	{
-		"command": "vscode-neovim.send",
-		"key": "enter",
-		"when": "terminalFocus",
-		"args": "<C-h>"
+		"command": "workbench.action.tasks.runTask",
+		"args": "terminal-next-in-tabs",
+		"key": "ctrl+j",
+		"when": "terminalTabsFocus"
+	},
+	{
+		"command": "workbench.action.tasks.runTask",
+		"args": "terminal-new-in-tabs",
+		"key": "ctrl+n",
+		"when": "terminalTabsFocus"
+	},
+	{
+		"command": "workbench.action.tasks.runTask",
+		"args": "terminal-previous-in-tabs",
+		"key": "ctrl+k",
+		"when": "terminalTabsFocus"
+	},
+	{
+		"command": "terminal.focus",
+		"key": "ctrl+h",
+		"when": "terminalTabsFocus"
+	},
+	{
+		"command": "workbench.action.terminal.focusTabs",
+		"key": "ctrl+l",
+		"when": "terminalFocus"
+	},
+	{
+		"command": "workbench.action.terminal.new",
+		"key": "ctrl+n",
+		"when": "terminalFocus"
 	}
 ]

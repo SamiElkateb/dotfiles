@@ -9,5 +9,11 @@
   "esbenp.prettier-vscode",
   "PKief.material-icon-theme",
   "XadillaX.viml",
-  "TomRijndorp.find-it-faster"
+  "TomRijndorp.find-it-faster",
+  "codezombiech.gitignore",
+  "mikestead.dotenv",
+  "chrisdias.vscode-opennewinstance",
+  "EditorConfig.EditorConfig",
+  "kbysiec.vscode-search-everywhere",
+  "Gruntfuggly.todo-tree"
 ]

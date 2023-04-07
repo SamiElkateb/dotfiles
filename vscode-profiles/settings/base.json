@@ -1,5 +1,7 @@
 {
-  "editor.formatOnSave": true,
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+	"gitlens.telemetry.enabled": false,
+  "editor.formatOnSave": false,
   "editor.lineNumbers": "relative",
   "diffEditor.ignoreTrimWhitespace": false,
   "workbench.colorTheme": "Tokyo Night",
@@ -27,5 +29,22 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/vscode-profiles/settings/init.vim",
-  "latex-workshop.latex.autoClean.run": "onBuilt"
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.terminal.focusTabs",
+    "workbench.action.increaseViewSize",
+    "workbench.action.decreaseViewSize",
+    "workbench.action.focusSideBar"
+  ],
+  "editor.formatOnPaste": true,
+  "files.exclude": {
+    "**/.git": false
+  },
+	"find-it-faster.advanced.disableStartupChecks": true,
+	"find-it-faster.general.showMaximizedTerminal": true,
+	"find-it-faster.general.batTheme": "tokyo-night",
+	"searchEverywhere.shouldInitOnStartup": true,
+	"github.copilot.enable": {
+        "*": false
+    }
 }

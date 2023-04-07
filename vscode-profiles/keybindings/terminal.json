@@ -6,17 +6,44 @@
   {
     "key": "ctrl+j",
     "command": "workbench.action.terminal.focus",
-    "when": "terminalIsOpen && editorFocus"
+    "when": "terminalIsOpen && editorFocus && !terminalTabsFocus"
   },
   {
     "key": "ctrl+k",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "terminalFocus && view != FindItFaster && viewItem != FindItFaster && webviewId != FindItFaster"
+    "when": "terminalFocus && !terminalTabsFocus"
   },
   {
-    "command": "vscode-neovim.send",
-    "key": "enter",
-    "when": "terminalFocus",
-    "args": "<C-h>"
+    "command": "workbench.action.tasks.runTask",
+    "args": "terminal-next-in-tabs",
+    "key": "ctrl+j",
+    "when": "terminalTabsFocus"
+  },
+  {
+    "command": "workbench.action.tasks.runTask",
+    "args": "terminal-new-in-tabs",
+    "key": "ctrl+n",
+    "when": "terminalTabsFocus"
+  },
+  {
+    "command": "workbench.action.tasks.runTask",
+    "args": "terminal-previous-in-tabs",
+    "key": "ctrl+k",
+    "when": "terminalTabsFocus"
+  },
+  {
+    "command": "terminal.focus",
+    "key": "ctrl+h",
+    "when": "terminalTabsFocus"
+  },
+  {
+    "command": "workbench.action.terminal.focusTabs",
+    "key": "ctrl+l",
+    "when": "terminalFocus"
+  },
+  {
+    "command": "workbench.action.terminal.new",
+    "key": "ctrl+n",
+    "when": "terminalFocus"
   }
 ]

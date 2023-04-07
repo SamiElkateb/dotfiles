@@ -73,3 +73,17 @@
 !limelight
 !limelight/limelightrc
 
+
+# tmux 
+!tmux
+!tmux/*.sh
+!tmux/*.conf
+
+# zathura
+!zathura
+!zatura/zathurarc
+
+
+# vim
+!vim
+!vim/.vimrc

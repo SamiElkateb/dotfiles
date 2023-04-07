@@ -6,5 +6,10 @@
   "VisualStudioExptTeam.intellicode-api-usage-examples",
   "VisualStudioExptTeam.vscodeintellicode",
   "vscjava.vscode-java-pack",
-  "vscjava.vscode-java-debug"
+  "vscjava.vscode-java-debug",
+  "ms-vscode-remote.remote-ssh",
+  "ms-vscode.remote-explorer",
+  "ms-vscode-remote.remote-ssh-edit",
+  "SonarSource.sonarlint-vscode",
+  "mads-hartmann.bash-ide-vscode"
 ]

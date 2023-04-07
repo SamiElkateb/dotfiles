@@ -28,7 +28,7 @@ const parseArgs = (argv) => {
 };
 
 try {
-  fs.rmdirSync(path.join(__dirname, "../common/data/User/workspaceStorage"), {recursive: true, force: true});
+  // fs.rmdirSync(path.join(__dirname, "../common/data/User/workspaceStorage"), {recursive: true, force: true});
   const code =
     "/Applications/Visual\\ Studio\\ Code.app/Contents/Resources/app/bin/code";
   const args = parseArgs(process.argv);
@@ -51,6 +51,9 @@ try {
   const keybindingsBuilderPath = path.join(__dirname, "../keybindings/builder.js");
   execFileSync(keybindingsBuilderPath, [`--profile=${args.lang}`]);
 
+  const tasksBuilderPath = path.join(__dirname, "../tasks/builder.js");
+  execFileSync(tasksBuilderPath, [`--profile=${args.lang}`]);
+
   const extensionDisablerPath = path.join(
     __dirname,
     "../extensions/disabler.js"
@@ -64,7 +67,7 @@ try {
     ""
   );
   const openFolder = args.openFolder ? "." : "";
-  const command = `${code} --user-data-dir="$HOME/.config/vscode-profiles/common/data" --extensions-dir="$HOME/.config/vscode-profiles/common/extensions" ${disabledExtensions} ${openFolder}`;
+  const command = `${code} -n --user-data-dir="$HOME/.config/vscode-profiles/common/data" --extensions-dir="$HOME/.config/vscode-profiles/common/extensions" ${disabledExtensions} ${openFolder}`;
 
   const commandPath = path.join(__dirname, "./command.sh");
   // const script = `#!/bin/bash\n${command}`;

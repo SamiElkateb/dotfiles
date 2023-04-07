@@ -17,6 +17,11 @@
   {
     "key": "ctrl+h",
     "command": "workbench.action.focusSideBar",
+    "when": "terminalFocus && !terminalTabsFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusSideBar",
     "when": "activeEditorGroupEmpty"
   },
   {
