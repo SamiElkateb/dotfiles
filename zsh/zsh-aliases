@@ -13,6 +13,11 @@ alias ccode='run_vscode_profile --profile=c '
 alias comcode='build_vscode_settings && code --user-data-dir="$HOME/.config/vscode-profiles/common/data" --extensions-dir="$HOME/.config/vscode-profiles/common/extensions"'
 alias wcode='run_vscode_profile --profile=web '
 
+alias tmux="tmux -f $HOME/.config/tmux/tmux.conf"
+alias tmux-sessionizer="$HOME/.config/tmux/tmux-sessionizer.sh"
+alias tms="tmux-sessionizer"
+alias tmux-cht="$HOME/.config/tmux/tmux-cht.sh"
+alias cht="$HOME/.config/tmux/tmux-cht.sh"
 
 alias python='python3'
 alias pip='pip3'
