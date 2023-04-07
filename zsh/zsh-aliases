@@ -5,19 +5,30 @@ alias nvimrc='nvim ~/.config/nvim/'
 alias gofiches="cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents"
 alias start_ml="start_conda && conda activate machine_learning"
 alias gvim="lvim"
+alias docker-compose="docker compose"
 
 alias jcode='run_vscode_profile --profile=java '
 alias mcode='run_vscode_profile --profile=misc '
 alias pcode='run_vscode_profile --profile=python '
 alias ccode='run_vscode_profile --profile=c '
+alias cscode='run_vscode_profile --profile=csharp '
 alias comcode='build_vscode_settings && code --user-data-dir="$HOME/.config/vscode-profiles/common/data" --extensions-dir="$HOME/.config/vscode-profiles/common/extensions"'
 alias wcode='run_vscode_profile --profile=web '
+
+alias yfire="screen -dmS firefox-youtube /Applications/Firefox.app/Contents/MacOS/firefox-bin -p youtube --no-remote"
+alias afire="screen -dmS firefox-ai /Applications/Firefox.app/Contents/MacOS/firefox-bin -p ai --no-remote 'https://chat.openai.com/chat'"
+alias dfire="screen -dmS firefox-ai /Applications/Firefox.app/Contents/MacOS/firefox-bin -p dev --no-remote 'https://github.com'"
+alias fire="screen -dmS firefox /Applications/Firefox.app/Contents/MacOS/firefox-bin -p default --no-remote"
 
 alias tmux="tmux -f $HOME/.config/tmux/tmux.conf"
 alias tmux-sessionizer="$HOME/.config/tmux/tmux-sessionizer.sh"
 alias tms="tmux-sessionizer"
 alias tmux-cht="$HOME/.config/tmux/tmux-cht.sh"
 alias cht="$HOME/.config/tmux/tmux-cht.sh"
+
+
+alias chrome="screen -dmS google-chrome /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --profile-directory='Default' --new-window"
+alias achrome="screen -dmS google-chrome-ai /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --profile-directory='Profile 1' --new-window 'https://chat.openai.com/chat'"
 
 alias python='python3'
 alias pip='pip3'

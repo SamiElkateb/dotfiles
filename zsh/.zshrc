@@ -1,4 +1,8 @@
 #!/bin/sh
+
+autoload -U compinit
+compinit
+
 export ZDOTDIR=$HOME/.config/zsh
 HISTFILE=~/.zsh_history
 setopt appendhistory
@@ -45,4 +49,3 @@ terminal=$(which_term)
 if [ "$terminal" = "alacritty" ]; then
   neofetch
 fi
-
