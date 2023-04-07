@@ -3,6 +3,7 @@
 !git
 !git/**
 !.gitignore
+!.gitmodules
 
 # lvim
 !lvim
@@ -17,6 +18,9 @@
 !lvim/after
 !lvim/after/ftplugin
 !lvim/after/ftplugin/*.lua
+
+# nvim
+!nvim
 
 # zsh
 !zsh
