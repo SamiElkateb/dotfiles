@@ -28,6 +28,7 @@
 !zsh/zsh-vim-mode
 !zsh/zsh-kill-apps-main
 !zsh/focus-mode
+!zsh/env.template
 
 # alacritty
 !alacritty
@@ -87,3 +88,7 @@
 # vim
 !vim
 !vim/.vimrc
+
+# bin
+!bin
+!bin/create_remote_repository.sh

@@ -7,6 +7,7 @@ export ZDOTDIR=$HOME/.config/zsh
 HISTFILE=~/.zsh_history
 setopt appendhistory
 source "$HOME/.zprofile"
+source "$ZDOTDIR/env"
 
 # options (man zshoptions)
 setopt autocd extendedglob nomatch menucomplete
