@@ -55,7 +55,7 @@ create_remote_repo () {
     https://api.github.com/user/repos \
     -d "{\"name\":\"$REPOSITORY_NAME\",\"description\":\"$DESCRIPTION\",\"private\": $IS_PRIVATE}"
 
-  git remote add origin git@github.com:$GITHUB_USERNAME/$REPOSITORY_NAME.git
+  git remote add origin git@github.com:"$GITHUB_USERNAME"/"$REPOSITORY_NAME".git
   git push -u origin main
 }
 
