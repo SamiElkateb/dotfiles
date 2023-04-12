@@ -96,3 +96,4 @@
 # bin
 !bin
 !bin/create_remote_repository.sh
+!bin/setup.sh
