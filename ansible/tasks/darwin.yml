@@ -1,11 +1,19 @@
+  - name: Check .zshrc exists
+    stat:
+      path: "{{ home }}/.zshrc"
+    register: stat_result
+
+  - name: Ensure zsh sourced
+    shell: |
+        touch {{ home }}/.zshrc
+        echo "source {{ home }}/.config/zsh/.zshrc" >> "{{ home }}/.zshrc"
+        source {{ home }}/.zshrc
+    changed_when: false
+    when: not stat_result.stat.exists
+
   - name: Ensure Neovim Installed
     community.general.homebrew:
       name: neovim
-      state: present
-
-  - name: Ensure Alacritty Installed
-    community.general.homebrew:
-      name: alacritty
       state: present
 
   - name: Ensure Tmux Installed
@@ -15,7 +23,7 @@
 
   - name: Ensure Yabai Installed
     community.general.homebrew:
-      name: yabai
+      name: koekeishiya/formulae/yabai
       state: present
 
   - name: Ensure SKHD Installed
@@ -33,8 +41,29 @@
       name: fzf
       state: present
 
+  - name: Tap Zathura
+    community.general.homebrew_tap:
+      name: zegervdv/zathura
+      state: present
+
   - name: Ensure Zathura Installed
     community.general.homebrew:
       name: zathura
       state: present
+
+  - name: Ensure GitHub CLI Installed
+    community.general.homebrew:
+      name: gh
+      state: present
+
+  - name: Check Alacritty exists
+    stat:
+      path: "/Applications/Alacritty.app/"
+    register: stat_result
+
+  - name: Ensure Alacritty Installed
+    community.general.homebrew:
+      name: homebrew/cask/alacritty
+      state: present
+    when: not stat_result.stat.exists
 

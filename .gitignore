@@ -101,6 +101,7 @@
 
 # ansible
 !ansible
+!ansible/ansible.cfg
 !ansible/inventory
 !ansible/main.yml
 !ansible/requirements.yml

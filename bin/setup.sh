@@ -66,7 +66,7 @@ fi
 cd "$ANSIBLE_DIR"
 
 if [[ -f "$ANSIBLE_DIR/vault-password.txt" ]]; then
-  ansible-playbook --diff --vault-password-file "$ANSIBLE_DIR/vault-password.txt" "$ANSIBLE_DIR/main.yml"
+  ansible-playbook --diff --ask-become-pass --vault-password-file "$ANSIBLE_DIR/vault-password.txt" "$ANSIBLE_DIR/main.yml"
 else
-  ansible-playbook --diff "$ANSIBLE_DIR/main.yml"
+  ansible-playbook --diff --ask-become-pass "$ANSIBLE_DIR/main.yml"
 fi

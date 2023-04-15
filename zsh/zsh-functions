@@ -1,6 +1,13 @@
 #!/bin/sh
-source "$HOME/.config/zsh/zsh-do"
-source "$HOME/.config/zsh/zsh-kill-apps"
+
+if [ -f "$HOME/.config/zsh/zsh-do" ]; then
+  source "$HOME/.config/zsh/zsh-do"
+fi
+
+if [ -f "$HOME/.config/zsh/zsh-kill-apps" ]; then
+  source "$HOME/.config/zsh/zsh-kill-apps"
+fi
+
 # Function to source files if they exist
 function zsh_add_file() {
     [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
