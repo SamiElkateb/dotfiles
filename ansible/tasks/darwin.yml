@@ -11,59 +11,21 @@
     changed_when: false
     when: not stat_result.stat.exists
 
-  - name: Ensure Neovim Installed
-    community.general.homebrew:
-      name: neovim
-      state: present
-
-  - name: Ensure Tmux Installed
-    community.general.homebrew:
-      name: tmux
-      state: present
-
-  - name: Ensure Yabai Installed
-    community.general.homebrew:
-      name: koekeishiya/formulae/yabai
-      state: present
-
-  - name: Ensure SKHD Installed
-    community.general.homebrew:
-      name: skhd
-      state: present
-
-  - name: Ensure Ripgrep Installed
-    community.general.homebrew:
-      name: ripgrep
-      state: present
-
-  - name: Ensure FZF Installed
-    community.general.homebrew:
-      name: fzf
-      state: present
-
-  - name: Tap Zathura
+  - name: Add Hombrew Taps
     community.general.homebrew_tap:
-      name: zegervdv/zathura
-      state: present
+      name: "{{ item.name | default(item) }}"
+      state: "{{ item.state | default('present') }}"
+    loop: "{{ homebrew_taps }}"
 
-  - name: Ensure Zathura Installed
+  - name: Ensure Homebrew Packages Installed
     community.general.homebrew:
-      name: zathura
-      state: present
+      name: "{{ item.name | default(item) }}"
+      state: "{{ item.state | default('present') }}"
+    loop: "{{ homebrew_installed_packages }}"
 
-  - name: Ensure GitHub CLI Installed
-    community.general.homebrew:
-      name: gh
-      state: present
-
-  - name: Check Alacritty exists
-    stat:
-      path: "/Applications/Alacritty.app/"
-    register: stat_result
-
-  - name: Ensure Alacritty Installed
-    community.general.homebrew:
-      name: homebrew/cask/alacritty
-      state: present
-    when: not stat_result.stat.exists
+  - name: Ensure Homebrew Casks Installed
+    community.general.homebrew_cask:
+      name: "{{ item.name | default(item) }}"
+      state: "{{ item.state | default('present') }}"
+    loop: "{{ homebrew_cask_apps }}"
 
