@@ -28,9 +28,9 @@ if ! [[ -f "$SSH_DIR/id_rsa" ]]; then
 
   ssh-keygen -b 4096 -t rsa -f "$SSH_DIR/id_rsa" -N "" -C "$USER@$HOSTNAME"
 
-  cat "$SSH_DIR/id_rsa.pub" >> "$SSH_DIR/authorized_keys"
+  # cat "$SSH_DIR/id_rsa.pub" >> "$SSH_DIR/authorized_keys"
 
-  chmod 600 "$SSH_DIR/authorized_keys"
+  # chmod 600 "$SSH_DIR/authorized_keys"
 fi
 
 
