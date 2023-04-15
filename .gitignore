@@ -98,3 +98,13 @@
 !bin
 !bin/create_remote_repository.sh
 !bin/setup.sh
+
+# ansible
+!ansible
+!ansible/inventory
+!ansible/main.yml
+!ansible/requirements.yml
+!ansible/tasks
+!ansible/tasks/*.yml
+!ansible/vars
+!ansible/vars/*.yml

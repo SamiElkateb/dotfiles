@@ -1,0 +1,40 @@
+  - name: Ensure Neovim Installed
+    community.general.homebrew:
+      name: neovim
+      state: present
+
+  - name: Ensure Alacritty Installed
+    community.general.homebrew:
+      name: alacritty
+      state: present
+
+  - name: Ensure Tmux Installed
+    community.general.homebrew:
+      name: tmux
+      state: present
+
+  - name: Ensure Yabai Installed
+    community.general.homebrew:
+      name: yabai
+      state: present
+
+  - name: Ensure SKHD Installed
+    community.general.homebrew:
+      name: skhd
+      state: present
+
+  - name: Ensure Ripgrep Installed
+    community.general.homebrew:
+      name: ripgrep
+      state: present
+
+  - name: Ensure FZF Installed
+    community.general.homebrew:
+      name: fzf
+      state: present
+
+  - name: Ensure Zathura Installed
+    community.general.homebrew:
+      name: zathura
+      state: present
+

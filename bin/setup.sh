@@ -11,7 +11,10 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     if ! [ -x "$(command -v brew)" ]; then
-      sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  
+      (echo; echo 'eval $(/opt/homebrew/bin/brew shellenv)') >> "$HOME/.zprofile"
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+      
     fi
     if ! [ -x "$(command -v ansible)" ]; then
       brew install ansible
