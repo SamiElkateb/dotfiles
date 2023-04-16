@@ -29,28 +29,31 @@ function prepare() {
     ansible-vault encrypt "$SSH_DIR/id_otc" 
     mkdir -p "$CONFIG_DIR/public"
     mv "$SSH_DIR/id_otc" "$CONFIG_DIR/public/id_otc" 
-    git add "$CONFIG_DIR/public/id_otc" && git commit -m "prepare: new install"
-    git push -u origin prepare/installation
+    git add "$CONFIG_DIR/public/id_otc"
+    git commit -m "prepare: new install"
+    git push -u origin prepare/installation --force
     git checkout "$CURRENT_BRANCH"
   else
     echo "prepare-otc: otc already exists"
-    exit 1
+    exit 0
   fi
 }
 
 function use() {
   cd "$CONFIG_DIR"
-  if ! [[ -f "$CONFIG_DIR/public/id_otc" ]]; then
-    echo "use-otc: OTC does not exist"
-    exit 1
-  fi
   if [[ -f "$SSH_DIR/id_rsa" ]]; then
     echo "use-otc: RSA key already exists!"
-    exit 1
+    exit 0
   fi
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
   git checkout prepare/installation
+  if ! [[ -f "$CONFIG_DIR/public/id_otc" ]]; then
+    git checkout "$CURRENT_BRANCH"
+    echo "use-otc: OTC does not exist"
+    exit 0
+  fi
   mv "$CONFIG_DIR/public/id_otc" "$SSH_DIR/id_rsa"
+  git reset --hard
   ansible-vault decrypt "$SSH_DIR/id_rsa" 
   git checkout "$CURRENT_BRANCH"
 }
@@ -72,8 +75,10 @@ function delete() {
   done
 
   git checkout prepare/installation
-  git reset HEAD~1 --hard
-  git push --force
+  if ! [[ -f "$CONFIG_DIR/public/id_otc" ]]; then
+    git reset HEAD~1 --hard
+    git push --force
+  fi
   git checkout "$CURRENT_BRANCH"
 }
 

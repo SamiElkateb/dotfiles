@@ -20,7 +20,9 @@
 !lvim/after/ftplugin
 !lvim/after/ftplugin/*.lua
 
-# nvim
+# submodules
+!ansible
+!personal
 !nvim
 
 # zsh
@@ -89,7 +91,6 @@
 !zathura
 !zatura/zathurarc
 
-
 # vim
 !vim
 !vim/.vimrc
@@ -99,17 +100,6 @@
 !bin/create_remote_repository.sh
 !bin/setup.sh
 !bin/otc.sh
-
-# ansible
-!ansible
-# !ansible/ansible.cfg
-# !ansible/inventory
-# !ansible/main.yml
-# !ansible/requirements.yml
-# !ansible/tasks
-# !ansible/tasks/*.yml
-# !ansible/vars
-# !ansible/vars/*.yml
 
 # public
 !public

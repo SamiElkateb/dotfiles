@@ -5,3 +5,7 @@
 [submodule "ansible"]
 	path = ansible
 	url = git@github.com:SamiElkateb/ansible.git
+
+[submodule "personal"]
+	path = personal
+	url = git@github.com:SamiElkateb/personal.git
