@@ -1,4 +1,5 @@
 download_dir: /tmp
 home: "{{ lookup('env', 'HOME') }}"
 config_dir: "{{ home }}/.config"
+repository: https://github.com/SamiElkateb/dotfiles.git 
 

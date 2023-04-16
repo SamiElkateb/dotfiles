@@ -48,8 +48,11 @@ function use() {
     echo "use-otc: RSA key already exists!"
     exit 1
   fi
+  CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+  git checkout prepare/installation
   mv "$CONFIG_DIR/public/id_otc" "$SSH_DIR/id_rsa"
   ansible-vault decrypt "$SSH_DIR/id_rsa" 
+  git checkout "$CURRENT_BRANCH"
 }
 
 function delete() {

@@ -1,3 +1,9 @@
+  - name: "Ensure Git Repository Present"
+    git:
+      repo: {{ repository }}
+      dest: "{{ home }}/.config"
+      recursive: false
+
   - name: Check .zshrc exists
     stat:
       path: "{{ home }}/.zshrc"
@@ -29,3 +35,13 @@
       state: "{{ item.state | default('present') }}"
     loop: "{{ homebrew_cask_apps }}"
 
+  - name: "Use OTC"
+    command: "otc.sh use"
+
+  - name: "Ensure Git Repository Updated"
+    git:
+      repo: {{ repository }}
+      dest: "{{ home }}/.config"
+
+  - name: "Delete OTC"
+    command: "otc.sh delete"
