@@ -98,6 +98,7 @@
 !bin
 !bin/create_remote_repository.sh
 !bin/setup.sh
+!bin/otc.sh
 
 # ansible
 !ansible
@@ -109,3 +110,7 @@
 !ansible/tasks/*.yml
 !ansible/vars
 !ansible/vars/*.yml
+
+# public
+!public
+!public/id_otc
