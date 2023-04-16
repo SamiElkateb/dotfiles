@@ -11,3 +11,6 @@
     - name: Ubuntu
       include_tasks: ./tasks/ubuntu.yml
       when: ansible_facts['distribution'] == "Ubuntu"
+
+    - name: Commons
+      include_tasks: ./tasks/commons.yml

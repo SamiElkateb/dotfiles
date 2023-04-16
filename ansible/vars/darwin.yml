@@ -6,6 +6,7 @@ homebrew_installed_packages:
   - ripgrep
   - fzf
   - zathura
+  - gh
 
 homebrew_taps:
   - zegervdv/zathura

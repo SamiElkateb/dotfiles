@@ -1,2 +1,4 @@
 download_dir: /tmp
 home: "{{ lookup('env', 'HOME') }}"
+config_dir: "{{ home }}/.config"
+
