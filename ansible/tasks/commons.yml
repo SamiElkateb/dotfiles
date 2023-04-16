@@ -1,7 +1,0 @@
-- name: Pull Neovim Config
-  command: git pull
-  register: config_pull_out
-  changed_when: "'Updating ' in config_pull_out.stdout"
-  failed_when: "'fatal' in config_pull_out.stdout"
-  args:
-    chdir: "{{ config_dir }}/neovim"

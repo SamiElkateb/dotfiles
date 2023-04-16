@@ -1,3 +1,7 @@
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:SamiElkateb/nvim.git
+
+[submodule "ansible"]
+	path = ansible
+	url = git@github.com:SamiElkateb/ansible.git
