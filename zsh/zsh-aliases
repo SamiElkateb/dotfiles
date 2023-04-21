@@ -23,8 +23,9 @@ alias fire="screen -dmS firefox /Applications/Firefox.app/Contents/MacOS/firefox
 alias tmux="tmux -f $HOME/.config/tmux/tmux.conf"
 alias tmux-sessionizer="$HOME/.config/tmux/tmux-sessionizer.sh"
 alias tms="tmux-sessionizer"
-alias tmux-cht="$HOME/.config/tmux/tmux-cht.sh"
-alias cht="$HOME/.config/tmux/tmux-cht.sh"
+# alias tmux-cht="$HOME/.config/tmux/tmux-cht.sh"
+alias cht="$HOME/.config/tmux/tmux-w3.sh"
+# alias cht="$HOME/.config/tmux/tmux-cht.sh"
 
 
 alias chrome="screen -dmS google-chrome /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --profile-directory='Default' --new-window"
