@@ -36,9 +36,6 @@ zle -N down-line-or-beginning-search
 # colors
 autoload -Uz colors && colors
 
-# keymaps
-source "$ZDOTDIR/keymaps"
-
 # functions
 source "$ZDOTDIR/zsh-functions"
 
@@ -57,3 +54,6 @@ terminal=$(which_term)
 if [ "$terminal" = "alacritty" ]; then
   neofetch
 fi
+
+# keymaps
+source "$ZDOTDIR/keymaps"
