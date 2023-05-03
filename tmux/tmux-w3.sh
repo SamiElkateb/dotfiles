@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: handle https://www.geeksforgeeks.org/how-to-get-the-duration-of-audio-in-python/
+#
  # selected=`cat ~/.config/tmux/.tmux-cht-languages ~/.config/tmux/.tmux-cht-command | fzf`
 
  # read -p "Enter Query: " query
@@ -42,7 +44,7 @@
 
  local_path=$(echo "$remote_path" | tr '/' '_')
 
- if [[ -z $selected ]]; then
+ if [[ -z "$selected" ]]; then
      exit 0
  fi
 
@@ -61,10 +63,14 @@
 #     |$fuzzy_finder \
 #     # |awk -F ';' '{print $NF}'
 # )
+echo "$local_path"
 end_path=$(cat "$HOME/.config/tmux/.cache/menus/$local_path"  \
     |$fuzzy_finder \
     |awk -F ';' '{print $NF}'
 )
+ if [[ -z "$end_path" ]]; then
+     exit 0
+ fi
 url="https://www.w3schools.com/$remote_path/$end_path"
 end_no_ext=$(echo "$end_path" |awk -F '.' '{print $1}')
 

@@ -36,23 +36,19 @@
 
   <xsl:template match="div[contains(@class, 'w3-code')]"
   ><xsl:choose><xsl:when test="contains(@class, 'jsHigh')"
-      >```javascript<xsl:apply-templates /><xsl:text
-      >&#xa;</xsl:text
-    >```</xsl:when
+      >```javascript<xsl:apply-templates />```</xsl:when
       ><xsl:when test="contains(@class, 'pythonHigh')"
-      >```python<xsl:apply-templates /><xsl:text
-      >&#xa;</xsl:text
-    >```</xsl:when
-      ><xsl:otherwise>```<xsl:apply-templates /><xsl:text
-      >&#xa;</xsl:text
-    >```</xsl:otherwise></xsl:choose><xsl:text
+      >```python<xsl:apply-templates />```</xsl:when
+      ><xsl:otherwise>```<xsl:apply-templates 
+      />```</xsl:otherwise></xsl:choose><xsl:text
       >&#xa;</xsl:text
     ></xsl:template
   >
 
   <xsl:template match="div[contains(@class, 'w3-code')]//text()"
     ><xsl:value-of select="." disable-output-escaping="yes"
-  /></xsl:template>
+      /><xsl:text>&#xa;</xsl:text
+  ></xsl:template>
 
   <xsl:template match="*[contains(@class, 'nextprev')]" />
   <xsl:template match="*[contains(@class, 'w3-btn')]" />
