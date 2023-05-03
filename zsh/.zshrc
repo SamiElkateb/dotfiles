@@ -19,6 +19,7 @@ stty stop undef		# Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
 unsetopt BEEP
 
+
 # completions
 autoload -Uz compinit
 zstyle ':completion:*' menu select
@@ -34,6 +35,9 @@ zle -N down-line-or-beginning-search
 
 # colors
 autoload -Uz colors && colors
+
+# keymaps
+source "$ZDOTDIR/keymaps"
 
 # functions
 source "$ZDOTDIR/zsh-functions"

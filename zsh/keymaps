@@ -1,0 +1,5 @@
+#!/bin/sh
+
+bindkey -s '^t' 'tms^M'
+# bindkey -s '^o' 'nvim $(fzf)^M'
+

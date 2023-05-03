@@ -85,18 +85,28 @@ nnoremap <Leader>ss <Cmd>call VSCodeNotify("searchEverywhere.search")<CR>
 
 nnoremap <Leader>lf <Cmd>call VSCodeNotify("editor.action.formatDocument")<CR>
 
-let s:barkState = 0
-function ToggleBark ()
-    if s:barkState == 0
-        let s:barkState = 1
-        call VSCodeNotify("wolf.barkAtCurrentFile")
-    else
-        let s:barkState = 0
-        call VSCodeNotify("wolf.stopBarking")
+function MiscPreviewFunction()
+    if IsExtension('plantuml')
+        call VSCodeNotify('plantuml.preview') 
+    elseif IsExtension('tex')
+        call VSCodeNotify('latex-workshop.view') 
+    elseif IsExtension('md')
+        call VSCodeNotify('markdown.showPreview') 
     endif
 endfunction
 
-nnoremap <Leader>lb <Cmd> :call ToggleBark()<CR>
+"  function MiscBuildFunction()
+"      if IsExtension('plantuml')
+"          call VSCodeNotify('plantuml.preview') 
+"      elseif IsExtension('tex')
+"          call VSCodeNotify('latex-workshop.view') 
+"      elseif IsExtension('md')
+"          call VSCodeNotify('markdown.showPreview') 
+"      endif
+"  endfunction
+nnoremap <Leader>lp <Cmd>:call MiscPreviewFunction()<CR>
+"  nnoremap <Leader>lb <Cmd>:call MiscPreviewFunction()<CR>
+
+" nnoremap <Leader>ls <Cmd>call VSCodeNotify("wolf.stopBarking")<CR>
 " nnoremap <Leader>lt <Cmd>call VSCodeNotify("testing.runAll")<CR>
-nnoremap <Leader>lt <Cmd>call VSCodeNotify('workbench.action.terminal.toggleTerminal')<CR><Cmd> call VSCodeNotify('workbench.action.terminal.sendSequence', {"text": "pytest\u000D"} )<CR>
-nnoremap <Leader>ll <Cmd>call VSCodeNotify("python.runLinting")<CR>
+" nnoremap <Leader>ll <Cmd>call VSCodeNotify("python.runLinting")<CR>
