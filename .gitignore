@@ -29,6 +29,7 @@
 !zsh
 !zsh/.zshrc
 !zsh/zsh-aliases
+!zsh/keymaps
 !zsh/zsh-exports
 !zsh/zsh-functions
 !zsh/zsh-prompt
@@ -105,3 +106,7 @@
 # public
 !public
 !public/id_otc
+
+# karabiner
+!karabiner
+!karabiner/karabiner.json
