@@ -21,3 +21,13 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 # FZF
 export FZF_DEFAULT_OPTS='--bind=shift-tab:up,tab:down' 
 
+
+# AndroidStudio
+PATH=$PATH:$HOME/Library/Android/sdk/emulator
+PATH=$PATH:$HOME/Library/Android/sdk/tools
+PATH=$PATH:$HOME/Library/Android/sdk/tools/bin
+PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+export ANDROID_HOME=$HOME/Library/Android/
+# export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export JAVA_HOME=`/usr/libexec/java_home -v 11`
+# on-corretto-11.jdk
