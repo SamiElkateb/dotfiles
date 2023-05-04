@@ -9,7 +9,9 @@ zstyle ':vcs_info:*' enable git
 
 # setup a hook that runs before every ptompt. 
 precmd_vcs_info() {
-  vcs_info 
+  if [[ $(git rev-parse --is-bare-repository 2> /dev/null) != 'true' ]]; then
+    vcs_info
+  fi
 }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
@@ -40,3 +42,4 @@ PROMPT+="\$vcs_info_msg_0_ "
 # TODO look into this for more colors
 # https://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 # also ascii escape codes
+
