@@ -3,4 +3,5 @@
 bindkey -s '^t' 'tms^M'
 # bindkey -s '^o' 'nvim $(fzf)^M'
 #
-bindkey -s '^p' "nvim -c \"lua require'telescope.builtin'.find_files(require('telescope.themes'))\"^M"
+# bindkey -s '^p' "nvim -c \"lua require'telescope.builtin'.find_files(require('telescope.themes'))\"^M"
+bindkey -s '^p' "lvim -c \"lua require'telescope.builtin'.find_files(require('telescope.themes'))\"^M"

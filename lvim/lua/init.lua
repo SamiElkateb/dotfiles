@@ -1,6 +1,0 @@
-require('standard.options')
-require('standard.keymaps')
-require('standard.plugins')
-require('standard.dap')
-require('standard.commands')
-require('standard.formatters')

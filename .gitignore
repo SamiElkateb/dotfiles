@@ -14,6 +14,14 @@
 !lvim/lua/*.lua
 !lvim/lua/standard
 !lvim/lua/standard/*.lua
+!lvim/lua/dap
+!lvim/lua/dap/*.lua
+!lvim/lua/lsp
+!lvim/lua/lsp/*.lua
+!lvim/lua/format
+!lvim/lua/format/*.lua
+!lvim/lua/utils
+!lvim/lua/utils/*.lua
 !lvim/ftplugin
 !lvim/ftplugin/*.lua
 !lvim/ftdetect

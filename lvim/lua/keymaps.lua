@@ -19,9 +19,7 @@ which_keymap['d'] = {
 }
 -- keymap["<leader>dv"] = ":DapSidebarToggle<cr>"
 
--- ToggleTerm --
-keymap["<C-t>"] = ":ToggleTerm<cr>"
-
 -- Buffer --
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+

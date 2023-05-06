@@ -1,3 +1,10 @@
+-- core --
+
+lvim.builtin.alpha.active = true
+lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.terminal.active = true
+
+-- 
 lvim.plugins = {
   {
     "iamcco/markdown-preview.nvim",
