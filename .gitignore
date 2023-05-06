@@ -8,8 +8,10 @@
 
 # lvim
 !lvim
+!lvim/lazy-lock.json
 !lvim/config.lua
 !lvim/lua
+!lvim/lua/*.lua
 !lvim/lua/standard
 !lvim/lua/standard/*.lua
 !lvim/ftplugin

@@ -3,7 +3,7 @@
 -- })
 lvim.log.level = "warn"
 lvim.format_on_save = false
--- lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "tokyonight"
 lvim.leader = "space"
 vim.opt.relativenumber = true
 lvim.builtin.alpha.active = true
@@ -40,7 +40,6 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- LSP --
 lvim.lsp.installer.setup.ensure_installed = {
-  "sumeko_lua",
   "pyright",
   "jsonls",
   "eslint",
