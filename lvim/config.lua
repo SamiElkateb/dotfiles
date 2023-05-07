@@ -5,6 +5,7 @@ require('keymaps')
 require('plugins.treesitter')
 require('plugins.nvim-tree')
 require('plugins.harpoon')
+require('plugins.git-worktree')
 
 require('dap.base')
 require('lsp.base')

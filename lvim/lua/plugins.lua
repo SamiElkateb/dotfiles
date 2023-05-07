@@ -24,5 +24,8 @@ lvim.plugins = {
   },
   {
     "ThePrimeagen/harpoon"
+  },
+  {
+    "ThePrimeagen/git-worktree.nvim"
   }
 }
