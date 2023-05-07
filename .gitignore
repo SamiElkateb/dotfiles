@@ -22,6 +22,8 @@
 !lvim/lua/format/*.lua
 !lvim/lua/utils
 !lvim/lua/utils/*.lua
+!lvim/lua/plugins
+!lvim/lua/plugins/*.lua
 !lvim/ftplugin
 !lvim/ftplugin/*.lua
 !lvim/ftdetect

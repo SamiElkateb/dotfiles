@@ -20,6 +20,6 @@ which_keymap['d'] = {
 -- keymap["<leader>dv"] = ":DapSidebarToggle<cr>"
 
 -- Buffer --
-lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+keymap["<S-l>"] = ":BufferLineCycleNext<CR>"
+keymap["<S-h>"] = ":BufferLineCyclePrev<CR>"
 
