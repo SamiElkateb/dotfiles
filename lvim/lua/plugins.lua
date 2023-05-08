@@ -4,7 +4,7 @@ lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 
--- 
+--
 lvim.plugins = {
   {
     "iamcco/markdown-preview.nvim",
@@ -29,5 +29,12 @@ lvim.plugins = {
   },
   {
     "ThePrimeagen/git-worktree.nvim"
+  },
+  {
+    "AckslD/nvim-neoclip.lua",
+    config = function()
+      require('neoclip').setup()
+      require('telescope').load_extension('neoclip')
+    end,
   }
 }
