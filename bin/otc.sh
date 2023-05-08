@@ -53,6 +53,7 @@ function use() {
     exit 0
   fi
   mv "$CONFIG_DIR/public/id_otc" "$SSH_DIR/id_rsa"
+  chmod 600 "$SSH_DIR/id_rsa"
   git reset --hard
   ansible-vault decrypt "$SSH_DIR/id_rsa" 
   git checkout "$CURRENT_BRANCH"
