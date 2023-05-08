@@ -21,6 +21,9 @@ vim.api.nvim_create_user_command(
     local dirpath = filepath:match("(.*/)")
     local filename = filepath:gsub("(.*/)", ""):match("(.+)%..+")
     vim.api.nvim_command(':! tmux new-window -t 2 -n "Run" -d &>/dev/null')
+    if filetype == "javascript" or filetype == "typescript"  or filetype == "javascriptreact" or filetype == "typescriptreact" then
+     vim.api.nvim_command(':! tmux send-keys -t :2 "npm start" C-m')
+    end
     if filetype == "plantuml" then
       vim.api.nvim_command(':! tmux send-keys -t :2 "cd ' .. dirpath .. ' && plantuml *.plantuml" C-m')
       vim.api.nvim_command(':! tmux send-keys -t :2 "open ' .. filename .. '.png" C-m')
@@ -48,7 +51,7 @@ vim.api.nvim_create_user_command(
   function()
     local buf = vim.api.nvim_get_current_buf() 
     local filetype = vim.api.nvim_buf_get_option(buf, "filetype")
-    vim.api.nvim_command(':! tmux new-window -t 3 -n "Run" -d &>/dev/null')
+    vim.api.nvim_command(':! tmux new-window -t 3 -n "Test" -d &>/dev/null')
     if filetype == "javascript" then
      vim.api.nvim_command(':! tmux send-keys -t :3 "npm test" C-m')
     end

@@ -10,10 +10,10 @@ keymap["<C-p>"] =
 "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>"
 
 -- Dap --
-which_keymap['d'] = {
-  name = 'Debug',
-  v = { ':DapSidebarToggle<cr>', "Sidebar Toggle" }
-}
+-- which_keymap['d'] = {
+--   name = 'Debug',
+--   v = { ':DapSidebarToggle<cr>', "Sidebar Toggle" }
+-- }
 -- keymap["<leader>dv"] = ":DapSidebarToggle<cr>"
 
 -- Buffer --
