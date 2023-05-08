@@ -15,9 +15,11 @@ lvim.plugins = {
     end,
   },
   {
-    "ggandor/lightspeed.nvim",
-    commit = "977ca1acdf8659ae0f7ac566d7fe06770661c9ce",
-    event = "BufRead"
+    "ggandor/leap.nvim",
+    name = "leap",
+    config = function()
+      require("leap").add_default_mappings()
+    end,
   },
   {
     "christoomey/vim-tmux-navigator"
