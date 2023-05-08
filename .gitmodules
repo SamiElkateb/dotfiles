@@ -9,3 +9,6 @@
 [submodule "personal"]
 	path = personal
 	url = git@github.com:SamiElkateb/personal.git
+[submodule "lvim"]
+	path = lvim
+	url = git@github.com:SamiElkateb/lvim.git

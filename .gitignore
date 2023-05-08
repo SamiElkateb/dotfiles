@@ -3,38 +3,13 @@
 # git
 !git
 !git/**
-!.gitignore
-!.gitmodules
-
-# lvim
-!lvim
-!lvim/lazy-lock.json
-!lvim/config.lua
-!lvim/lua
-!lvim/lua/*.lua
-!lvim/lua/standard
-!lvim/lua/standard/*.lua
-!lvim/lua/dap
-!lvim/lua/dap/*.lua
-!lvim/lua/lsp
-!lvim/lua/lsp/*.lua
-!lvim/lua/format
-!lvim/lua/format/*.lua
-!lvim/lua/utils
-!lvim/lua/utils/*.lua
-!lvim/lua/plugins
-!lvim/lua/plugins/*.lua
-!lvim/ftplugin
-!lvim/ftplugin/*.lua
-!lvim/ftdetect
-!lvim/ftdetect/*.lua
-!lvim/after
-!lvim/after/ftplugin
-!lvim/after/ftplugin/*.lua
+!./.gitignore
+!./.gitmodules
 
 # submodules
 !ansible
 !personal
+!lvim
 !nvim
 
 # zsh
