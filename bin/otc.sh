@@ -52,6 +52,7 @@ function use() {
     echo "use-otc: OTC does not exist"
     exit 0
   fi
+  mkdir -p "$SSH_DIR"
   mv "$CONFIG_DIR/public/id_otc" "$SSH_DIR/id_rsa"
   chmod 600 "$SSH_DIR/id_rsa"
   git reset --hard
