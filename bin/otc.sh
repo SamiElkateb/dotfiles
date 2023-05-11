@@ -56,7 +56,11 @@ function use() {
   mv "$CONFIG_DIR/public/id_otc" "$SSH_DIR/id_rsa"
   chmod 600 "$SSH_DIR/id_rsa"
   git reset --hard
-  ansible-vault decrypt "$SSH_DIR/id_rsa" 
+  if [[ -z "${ANSIBLE_VAULT_PASSWORD}" ]]; then
+    ansible-vault --vault-password-file <(cat <<<"$ANSIBLE_VAULT_PASSWORD") decrypt "$SSH_DIR/id_rsa"
+  else
+    ansible-vault decrypt "$SSH_DIR/id_rsa" 
+  fi
   git checkout "$CURRENT_BRANCH"
 }
 

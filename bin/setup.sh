@@ -2,10 +2,21 @@
 
 set -e
 
+
 CONFIG_DIR="$HOME/.config"
 TMP_CONFIG_DIR="$HOME/.tmpconfig"
 ANSIBLE_DIR="$CONFIG_DIR/ansible"
+TMP_DIR="/tmp"
 SSH_DIR="$HOME/.ssh"
+
+read -s -p "Ansible Become Password: " ANSIBLE_BECOME_PASSWORD
+echo 
+read -s -p "Ansible Vault Password: " ANSIBLE_VAULT_PASSWORD
+echo 
+echo "$ANSIBLE_BECOME_PASSWORD" | sudo -S -k echo && echo "Starting ..."
+
+# Ask System Events permission:
+osascript -e 'tell application "System Events" to keystroke "a"'
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if ! [ -x "$(command -v ansible)" ]; then
@@ -64,7 +75,19 @@ fi
 # fi
 #
 
-ansible-pull -U "https://github.com/SamiElkateb/ansible.git" --vault-id personal@prompt main.yml
+if ! [[ -d "$TMP_DIR/ansible" ]]; then
+  git clone "https://github.com/SamiElkateb/ansible.git" "$TMP_DIR/ansible"
+fi
+
+cd "$TMP_DIR/ansible"
+git pull
+
+export ANSIBLE_BECOME_PASSWORD
+export ANSIBLE_VAULT_PASSWORD
+ansible-playbook -e ansible_become_password='{{ lookup("env", "ANSIBLE_BECOME_PASSWORD") }}' --vault-password-file <(cat <<<"$ANSIBLE_VAULT_PASSWORD") main.yml
+unset ANSIBLE_BECOME_PASSWORD
+unset ANSIBLE_VAULT_PASSWORD
+# ansible-playbook -e ansible_become_password='{{ lookup("env", "ansible_become_password") }}' --vault-id personal@prompt main.yml
 
 if [[ -d "$TMP_CONFIG_DIR" ]]; then
   cp "$TMP_CONFIG_DIR/*" "$CONFIG_DIR/"
