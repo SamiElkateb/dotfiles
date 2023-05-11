@@ -16,7 +16,7 @@ echo
 echo "$ANSIBLE_BECOME_PASSWORD" | sudo -S -k echo && echo "Starting ..."
 
 # Ask System Events permission:
-osascript -e 'tell application "System Events" to keystroke "a"'
+osascript -e 'tell application "System Events" to keystroke " "'
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if ! [ -x "$(command -v ansible)" ]; then
@@ -25,7 +25,24 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     
     if ! which -s brew; then
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  
+      curl -fssL https://raw.githubusercontent.com/Homebrew/install/f18475b/install.sh > "$TMP_DIR/brew_install.sh"
+      EXPECTED_SHASUM=568c87c18fc211eb8f8236e042741522868f9a09a36f529fe3445544a7b21154
+      COMPUTED_SHASUM=$(shasum -a 256 "$TMP_DIR/brew_install.sh" | awk '{print $1}')
+      if ! [ "$EXPECTED_SHASUM" = "$COMPUTED_SHASUM" ]; then
+        echo "$COMPUTED_SHASUM"
+        echo "Brew installer corrupted!"
+        exit 1 
+      fi
+      chmod +x "$TMP_DIR/brew_install.sh"
+      export SUDO_ASKPASS="$TMP_DIR/pass.sh"
+      echo '#!/bin/bash' > "$SUDO_ASKPASS"
+      echo "echo '$ANSIBLE_BECOME_PASSWORD'" >> "$SUDO_ASKPASS"
+      chmod +x "$SUDO_ASKPASS"
+      export NONINTERACTIVE=1
+      "$TMP_DIR/brew_install.sh"
+      rm "$SUDO_ASKPASS"
+      unset SUDO_ASKPASS
+
       (echo; echo "eval $(/opt/homebrew/bin/brew shellenv)") >> "$HOME/.zprofile"
       eval "$(/opt/homebrew/bin/brew shellenv)"
       
