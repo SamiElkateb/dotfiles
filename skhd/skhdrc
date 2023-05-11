@@ -21,10 +21,10 @@ cmd + shift - 0x1C : yabai -m window --space 8
 cmd + shift - 0x19 : yabai -m window --space 9 
 
 # shift window in current workspace
-lcmd + lshift + lalt + lctrl - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
-lcmd + lshift + lalt + lctrl - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
-lcmd + lshift + lalt + lctrl - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
-lcmd + lshift + lalt + lctrl - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east) # removed on mac since it maps to |
+cmd + shift + alt + ctrl - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+cmd + shift + alt + ctrl - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+cmd + shift + alt + ctrl - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+cmd + shift + alt + ctrl - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east) # removed on mac since it maps to |
 # alternatively, use the arrow keys
 alt + shift - left : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
 alt + shift - down : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
@@ -50,7 +50,7 @@ cmd + shift - f : yabai -m window --toggle zoom-fullscreen
 
 cmd + shift - m : open -n /System/Applications/Music.app
 # cmd - return : open -n /Applications/Alacritty.app
-lcmd + lshift + lalt + lctrl - return : open -n /Applications/Alacritty.app
+cmd + shift + alt + ctrl - return : open -n /Applications/Alacritty.app
 # cmd - return : open -n /Applications/Alacritty.app
 # cmd - f : open -n /Applications/Firefox.app
 # cmd - t : open -n /Applications/Tor Browser.app

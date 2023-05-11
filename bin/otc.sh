@@ -56,6 +56,7 @@ function use() {
   mv "$CONFIG_DIR/public/id_otc" "$SSH_DIR/id_rsa"
   chmod 600 "$SSH_DIR/id_rsa"
   git reset --hard
+  echo "$NONINTERACTIVE"
   if [[ -z "${ANSIBLE_VAULT_PASSWORD}" ]]; then
     ansible-vault --vault-password-file <(cat <<<"$ANSIBLE_VAULT_PASSWORD") decrypt "$SSH_DIR/id_rsa"
   else
@@ -81,9 +82,11 @@ function delete() {
   done
 
   git checkout prepare/installation
-  if ! [[ -f "$CONFIG_DIR/public/id_otc" ]]; then
+  if [[ -f "$CONFIG_DIR/public/id_otc" ]]; then
     git reset HEAD~1 --hard
     git push --force
+  else
+    echo "No new changes."
   fi
   git checkout "$CURRENT_BRANCH"
 }
