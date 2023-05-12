@@ -9,13 +9,31 @@ CONFIG_DIR="$HOME/.config"
 TMP_CONFIG_DIR="$HOME/.tmpconfig"
 ANSIBLE_DIR="$CONFIG_DIR/ansible"
 TMP_DIR="/tmp"
-SSH_DIR="$HOME/.ssh"
 
-read -s -p "Ansible Become Password: " ANSIBLE_BECOME_PASSWORD
-echo 
-read -s -p "Ansible Vault Password: " ANSIBLE_VAULT_PASSWORD
-echo 
-echo "$ANSIBLE_BECOME_PASSWORD" | sudo -S -k echo && echo "Starting ..."
+if [ -z "$INSTALL_LEVEL" ]; then
+  read -p "Installation Level: 
+  1: CORE
+  2: BASIC
+  3: EXTENDED
+  " INSTALL_LEVEL
+  export INSTALL_LEVEL
+  echo
+fi
+
+if [ -z "$WITH_AUTH" ]; then
+  read -p "With Authentication: 
+  0: NO
+  1: YES
+  " WITH_AUTH
+  export WITH_AUTH
+  echo
+fi
+
+if [ -z "$ANSIBLE_BECOME_PASSWORD" ]; then
+  read -s -p "Ansible Become Password: " ANSIBLE_BECOME_PASSWORD
+  export ANSIBLE_BECOME_PASSWORD
+  echo
+fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if ! [ -x "$(command -v ansible)" ]; then
@@ -97,13 +115,20 @@ fi
 
 cd "$TMP_DIR/ansible"
 git pull
+AUTH_TAG=""
+if [ "$WITH_AUTH" = 1 ]; then
+  AUTH_TAG=",auth"
+fi
 
 export ANSIBLE_BECOME_PASSWORD
-export ANSIBLE_VAULT_PASSWORD
-ansible-playbook -e ansible_become_password='{{ lookup("env", "ANSIBLE_BECOME_PASSWORD") }}' --vault-password-file <(cat <<<"$ANSIBLE_VAULT_PASSWORD") main.yml
+if [ "$INSTALL_LEVEL" = 1 ]; then
+  ansible-playbook -e ansible_become_password='{{ lookup("env", "ANSIBLE_BECOME_PASSWORD") }}' --tags "core$AUTH_TAG" main.yml
+elif [ "$INSTALL_LEVEL" = 2 ]; then
+  ansible-playbook -e ansible_become_password='{{ lookup("env", "ANSIBLE_BECOME_PASSWORD") }}' --tags "basic$AUTH_TAG" main.yml
+elif [ "$INSTALL_LEVEL" = 3 ]; then
+  ansible-playbook -e ansible_become_password='{{ lookup("env", "ANSIBLE_BECOME_PASSWORD") }}' --tags "extended$AUTH_TAG" main.yml
+fi
 unset ANSIBLE_BECOME_PASSWORD
-unset ANSIBLE_VAULT_PASSWORD
-# ansible-playbook -e ansible_become_password='{{ lookup("env", "ansible_become_password") }}' --vault-id personal@prompt main.yml
 
 if [[ -d "$TMP_CONFIG_DIR" ]]; then
   cp "$TMP_CONFIG_DIR/*" "$CONFIG_DIR/"
