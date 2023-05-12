@@ -2,8 +2,10 @@
 
 set -e
 
-# Ask System Events permission:
-osascript -e 'tell application "System Events" to keystroke " "'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # Ask System Events permission:
+  osascript -e 'tell application "System Events" to keystroke " "'
+fi
 
 CONFIG_DIR="$HOME/.config"
 TMP_CONFIG_DIR="$HOME/.tmpconfig"
@@ -28,6 +30,29 @@ if [ -z "$WITH_AUTH" ]; then
   export WITH_AUTH
   echo
 fi
+
+if [ -z "$WITH_NOTIFICATION" ]; then
+  read -p "With Notification: 
+  0: NO
+  1: YES
+  " WITH_NOTIFICATION
+  export WITH_NOTIFICATION
+  echo
+
+  if [ "$WITH_NOTIFICATION" = 1 ]; then
+    read -s -p "Notification Password: " NOTIFICATION_PASSWORD
+    NOTIFICATION_VAULT_FILE="$TMP_DIR/notification_password.txt"
+    echo "$NOTIFICATION_PASSWORD" > "$NOTIFICATION_VAULT_FILE"
+    echo
+    if [ -z "$ANSIBLE_VAULT_PASSWORD_FILE" ]; then 
+      ANSIBLE_VAULT_PASSWORD_FILE="$NOTIFICATION_VAULT_FILE"
+    else
+      ANSIBLE_VAULT_PASSWORD_FILE="$ANSIBLE_VAULT_PASSWORD_FILE $NOTIFICATION_VAULT_FILE"
+    fi
+    export ANSIBLE_VAULT_PASSWORD_FILE
+  fi
+fi
+
 
 if [ -z "$ANSIBLE_BECOME_PASSWORD" ]; then
   read -s -p "Ansible Become Password: " ANSIBLE_BECOME_PASSWORD
@@ -72,42 +97,11 @@ else
     exit 1
 fi
 
-# if ! [[ -f "$SSH_DIR/id_rsa" ]]; then
-#   mkdir -p "$SSH_DIR"
-#
-#   chmod 700 "$SSH_DIR"
-#
-#   ssh-keygen -b 4096 -t rsa -f "$SSH_DIR/id_rsa" -N "" -C "$USER@$HOSTNAME"
-#
-#   # cat "$SSH_DIR/id_rsa.pub" >> "$SSH_DIR/authorized_keys"
-#
-#   # chmod 600 "$SSH_DIR/authorized_keys"
-# fi
-
 if ! [[ -d "$ANSIBLE_DIR" ]]; then
   if [[ -d "$CONFIG_DIR" ]]; then
     mv "$CONFIG_DIR" "$TMP_CONFIG_DIR"
   fi
-# else
-#   cd "$CONFIG_DIR"
-#   git pull
 fi
-
-
-# if [[ -f "$ANSIBLE_DIR/requirements.yml" ]]; then
-#   cd "$ANSIBLE_DIR"
-#
-#   ansible-galaxy install -r requirements.yml
-# fi
-
-# cd "$ANSIBLE_DIR"
-
-# if [[ -f "$ANSIBLE_DIR/vault-password.txt" ]]; then
-#   ansible-playbook --diff --ask-become-pass --vault-password-file "$ANSIBLE_DIR/vault-password.txt" "$ANSIBLE_DIR/main.yml"
-# else
-#   ansible-playbook --diff --ask-become-pass "$ANSIBLE_DIR/main.yml"
-# fi
-#
 
 if ! [[ -d "$TMP_DIR/ansible" ]]; then
   git clone "https://github.com/SamiElkateb/ansible.git" "$TMP_DIR/ansible"
@@ -115,20 +109,35 @@ fi
 
 cd "$TMP_DIR/ansible"
 git pull
-AUTH_TAG=""
+CONDITIONAL_TAGS=""
 if [ "$WITH_AUTH" = 1 ]; then
-  AUTH_TAG=",auth"
+  CONDITIONAL_TAGS="$CONDITIONAL_TAGS,auth"
+fi
+if [ "$WITH_NOTIFICATION" = 1 ]; then
+  CONDITIONAL_TAGS="$CONDITIONAL_TAGS,notify"
 fi
 
 export ANSIBLE_BECOME_PASSWORD
+export SUDO_ASKPASS="$TMP_DIR/pass.sh"
+echo '#!/bin/bash' > "$SUDO_ASKPASS"
+echo "echo '$ANSIBLE_BECOME_PASSWORD'" >> "$SUDO_ASKPASS"
+chmod +x "$SUDO_ASKPASS"
 if [ "$INSTALL_LEVEL" = 1 ]; then
-  ansible-playbook -e ansible_become_password='{{ lookup("env", "ANSIBLE_BECOME_PASSWORD") }}' --tags "core$AUTH_TAG" main.yml
+  ansible-playbook -e ansible_become_password='{{ lookup("env", "ANSIBLE_BECOME_PASSWORD") }}' --tags "core$CONDITIONAL_TAGS" main.yml
 elif [ "$INSTALL_LEVEL" = 2 ]; then
-  ansible-playbook -e ansible_become_password='{{ lookup("env", "ANSIBLE_BECOME_PASSWORD") }}' --tags "basic$AUTH_TAG" main.yml
+  ansible-playbook -e ansible_become_password='{{ lookup("env", "ANSIBLE_BECOME_PASSWORD") }}'  --tags "basic$CONDITIONAL_TAGS" main.yml
 elif [ "$INSTALL_LEVEL" = 3 ]; then
-  ansible-playbook -e ansible_become_password='{{ lookup("env", "ANSIBLE_BECOME_PASSWORD") }}' --tags "extended$AUTH_TAG" main.yml
+  ansible-playbook -e ansible_become_password='{{ lookup("env", "ANSIBLE_BECOME_PASSWORD") }}' --tags "extended$CONDITIONAL_TAGS" main.yml
 fi
+
+rm "$SUDO_ASKPASS"
+unset SUDO_ASKPASS
 unset ANSIBLE_BECOME_PASSWORD
+unset NOTIFICATION_PASSWORD
+
+if [ -f "$NOTIFICATION_VAULT_FILE" ]; then
+  rm "$NOTIFICATION_VAULT_FILE"
+fi
 
 if [[ -d "$TMP_CONFIG_DIR" ]]; then
   cp "$TMP_CONFIG_DIR/*" "$CONFIG_DIR/"
