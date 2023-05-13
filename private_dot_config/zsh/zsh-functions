@@ -1,0 +1,230 @@
+#!/bin/sh
+
+if [ -f "$HOME/.config/zsh/zsh-do" ]; then
+  source "$HOME/.config/zsh/zsh-do"
+fi
+
+if [ -f "$HOME/.config/zsh/zsh-kill-apps" ]; then
+  source "$HOME/.config/zsh/zsh-kill-apps"
+fi
+
+# Function to source files if they exist
+function zsh_add_file() {
+    [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
+}
+
+
+function zsh_add_plugin() {
+    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
+        # For plugins
+        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
+        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
+    else
+        git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
+    fi
+}
+
+function zsh_add_completion() {
+    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
+    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
+        # For completions
+		completion_file_path=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
+		fpath+="$(dirname "${completion_file_path}")"
+        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh"
+    else
+        git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME"
+		fpath+=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
+        [ -f $ZDOTDIR/.zccompdump ] && $ZDOTDIR/.zccompdump
+    fi
+	completion_file="$(basename "${completion_file_path}")"
+	if [ "$2" = true ] && compinit "${completion_file:1}"
+}
+
+function update_zsh_config(){
+    cd $ZDOTDIR && git pull
+}
+
+function start_conda(){
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+
+  __conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
+          . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
+      else
+          export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+# <<< conda initialize <<<
+}
+
+function gocours(){
+  if [ "$1" ]; then
+    cd $HOME/workspace/polytech/cours && cd "$1"
+  else 
+    cd $HOME/workspace/polytech/cours
+  fi
+}
+
+function goobsidian(){
+  if [ "$1" ]; then
+    cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Polytech/ && cd "$1"
+  else 
+    cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Polytech/
+  fi
+}
+
+function gotd(){
+  if [ "$1" ]; then
+    cd $HOME/workspace/polytech/td && cd "$1"
+  else 
+    cd $HOME/workspace/polytech/td
+  fi
+}
+
+function newReport(){
+  mkdir report
+  cp "$HOME/workspace/latex-templates/report/main.tex" "$PWD/report"
+  cp -r "$HOME/workspace/latex-templates/report/template" "$PWD/report"
+  cp -r "$HOME/workspace/latex-templates/report/content" "$PWD/report"
+  cp -r "$HOME/workspace/latex-templates/report/images"  "$PWD/report"
+}
+
+function build_vscode_settings(){
+  $HOME/.config/vscode-profiles/settings/builder.js $1
+  yes | cp "$HOME/.config/vscode-profiles/settings/settings.json" "$HOME/.config/vscode-profiles/common/data/User/settings.json" 
+}
+
+
+function run_vscode_profile(){
+  $HOME/.config/vscode-profiles/runner/runner.js $1 $2
+}
+
+function vscode(){
+  music 
+  run_vscode_profile --profile=$1 $2
+}
+
+function block_sites(){
+
+  BLOCKING_TEXT="# BEGIN SELFCONTROL BLOCK\n0.0.0.0	www.youtube.com\n::	www.youtube.com\n0.0.0.0	youtube.com\n::	youtube.com\n0.0.0.0	www.facebook.com\n::	www.facebook.com\n0.0.0.0	www.netflix.com\n::	www.netflix.com\n0.0.0.0	www.primevideo.com\n::	www.primevideo.com\n0.0.0.0	twitter.com\n::	twitter.com\n0.0.0.0	www.twitter.com\n::	www.twitter.com\n0.0.0.0	primevideo.com\n::	primevideo.com\n0.0.0.0	www.disneyplus.com\n::	www.disneyplus.com\n0.0.0.0	www.reddit.com\n::	www.reddit.com\n0.0.0.0	api.twitter.com\n::	api.twitter.com\n0.0.0.0	reddit.com\n::	reddit.com\n0.0.0.0	disneyplus.com\n::	disneyplus.com\n0.0.0.0	netflix.com\n::	netflix.com\n0.0.0.0	assets.nflxext.com\n::	assets.nflxext.com\n0.0.0.0	nflxext.com\n::	nflxext.com\n0.0.0.0	codex.nflxext.com\n::	codex.nflxext.com\n0.0.0.0	facebook.com\n::	facebook.com\n# END SELFCONTROL BLOCK"
+  block="block"
+  unblock="unblock"
+  if [ $1 = $block ]; then
+    please_do bash -c "printf  '$BLOCKING_TEXT' >> /etc/hosts"
+  else
+    please_do bash -c "sed -i '' '/# BEGIN/,\$d' /etc/hosts"
+  fi
+}
+
+function start_gaming(){
+    defaults write com.apple.dock persistent-apps -array
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Safari.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Discord.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/League of Legends.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Steam.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Epic Games Launcher.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    killapps "focus-gaming"
+    block_sites "unblock"
+}
+
+function start_study(){
+    defaults write com.apple.dock persistent-apps -array
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Firefox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$HOME/workspace/polytech/</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Notion.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Alacritty.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/IntelliJ IDEA CE.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Visual Studio Code.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Anki.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Slack.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Discord.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    killapps "focus-study"
+    block_sites "block"
+}
+
+function start_homework(){
+    defaults write com.apple.dock persistent-apps -array
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Safari.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$HOME/workspace/polytech/</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Notion.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Alacritty.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Anki.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Slack.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Discord.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/WebPomodoro.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    killapps "focus-homework"
+    block_sites "block"
+}
+
+function start_focus(){
+  FOCUS_MODE=$($HOME/.config/zsh/focus-mode "show")
+  if [ $FOCUS_MODE = "Study" ]; then
+    start_study
+  fi
+  if [ $FOCUS_MODE = "Homework" ]; then
+    start_homework
+  fi
+  if [ $FOCUS_MODE = "Gaming" ]; then
+    start_gaming
+  fi
+  if [ $FOCUS_MODE = "Sleep" ]; then
+    pmset displaysleepnow
+  fi
+}
+
+function stop_focus(){
+    defaults write com.apple.dock persistent-apps -array
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Launchpad.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Safari.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Alacritty.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Discord.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/WebPomodoro.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    killapps "remove-focus"
+    block_sites "unblock"
+}
+function which_term(){
+   term=$(ps -p $(ps -p $$ -o ppid=) -o args=);
+   found=0;
+   case $term in
+       *Visual\ Studio\ Code*)
+           found=1
+           echo "vscode"
+           ;;
+       *nvim*)
+           found=1
+           echo "nvim"
+           ;;
+       *Alacritty*)
+           found=1
+           echo "alacritty"
+           ;;
+       *)
+   esac
+   [ $found -eq 0 ] && echo "$term "
+   return 0;
+}
+
+
+function fuzzyvscode() {
+    [[ -n $1 ]] && cd "$1" # go to provided folder or noop
+
+    export FZF_DEFAULT_COMMAND="rg --column --line-number --no-heading --color=always -- ''"
+    selected=$(
+      fzf \
+        --ansi \
+        --delimiter : \
+        --bind "f12:execute-silent:(code -g $PWD/{1..3})" \
+        --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
+        --preview 'bat -f --highlight-line={2} {1}' | cut -d":" -f1,2,3
+    )
+
+    # echo "$PWD"/"$selected"
+    echo "$PWD"/"$selected" > $TMPDIR/fuzzyselection.txt
+}
+
