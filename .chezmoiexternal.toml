@@ -1,17 +1,17 @@
 [".config/ansible"]
     type = "git-repo"
-    url = "git@github.com:SamiElkateb/ansible.git"
+    url = "https://github.com/SamiElkateb/ansible.git"
     refreshPeriod = "1h"
 
 [".config/lvim"]
     type = "git-repo"
-    url = "git@github.com:SamiElkateb/lvim.git"
+    url = "https://github.com/SamiElkateb/lvim.git"
     refreshPeriod = "1h"
 
 
 [".config/nvim"]
     type = "git-repo"
-    url = "git@github.com:SamiElkateb/nvim.git"
+    url = "https://github.com/SamiElkateb/nvim.git"
     refreshPeriod = "1h"
 
 [".config/personal"]
