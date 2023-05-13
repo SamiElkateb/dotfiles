@@ -97,12 +97,6 @@ else
     exit 1
 fi
 
-if ! [[ -d "$ANSIBLE_DIR" ]]; then
-  if [[ -d "$CONFIG_DIR" ]]; then
-    mv "$CONFIG_DIR" "$TMP_CONFIG_DIR"
-  fi
-fi
-
 if ! [[ -d "$TMP_DIR/ansible" ]]; then
   git clone "https://github.com/SamiElkateb/ansible.git" "$TMP_DIR/ansible"
 fi
@@ -137,9 +131,4 @@ unset NOTIFICATION_PASSWORD
 
 if [ -f "$NOTIFICATION_VAULT_FILE" ]; then
   rm "$NOTIFICATION_VAULT_FILE"
-fi
-
-if [[ -d "$TMP_CONFIG_DIR" ]]; then
-  cp "$TMP_CONFIG_DIR/*" "$CONFIG_DIR/"
-  rm -rf "$TMP_CONFIG_DIR"
 fi
