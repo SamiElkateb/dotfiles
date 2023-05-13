@@ -1,0 +1,20 @@
+[".config/ansible"]
+    type = "git-repo"
+    url = "git@github.com:SamiElkateb/ansible.git"
+    refreshPeriod = "1h"
+
+[".config/lvim"]
+    type = "git-repo"
+    url = "git@github.com:SamiElkateb/lvim.git"
+    refreshPeriod = "1h"
+
+
+[".config/nvim"]
+    type = "git-repo"
+    url = "git@github.com:SamiElkateb/nvim.git"
+    refreshPeriod = "1h"
+
+[".config/personal"]
+    type = "git-repo"
+    url = "git@github.com:SamiElkateb/personal.git"
+    refreshPeriod = "1h"

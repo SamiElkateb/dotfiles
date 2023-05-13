@@ -1,0 +1,65 @@
+#!/usr/bin/env sh
+# change focus
+cmd - h : yabai -m window --focus west
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - l : yabai -m window --focus east
+# (alt) change focus (using arrow keys)
+# cmd - left  : yabai -m window --focus west
+# cmd - down  : yabai -m window --focus south
+# cmd - up    : yabai -m window --focus north
+# cmd - right : yabai -m window --focus east
+
+cmd + shift - 0x12 : yabai -m window --space 1
+cmd + shift - 0x13 : yabai -m window --space 2
+cmd + shift - 0x14 : yabai -m window --space 3
+cmd + shift - 0x15 : yabai -m window --space 4 
+cmd + shift - 0x17 : yabai -m window --space 5 
+cmd + shift - 0x16 : yabai -m window --space 6 
+cmd + shift - 0x1A : yabai -m window --space 7 
+cmd + shift - 0x1C : yabai -m window --space 8 
+cmd + shift - 0x19 : yabai -m window --space 9 
+
+# shift window in current workspace
+cmd + shift + alt + ctrl - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+cmd + shift + alt + ctrl - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+cmd + shift + alt + ctrl - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+cmd + shift + alt + ctrl - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east) # removed on mac since it maps to |
+# alternatively, use the arrow keys
+alt + shift - left : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+alt + shift - down : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+alt + shift - up : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+alt + shift - right : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+# lcmd + lshift + lalt + lctrl
+# close focused window
+# cmd + shift - w : yabai -m window --close
+
+#fullscreen
+cmd + shift - f : yabai -m window --toggle zoom-fullscreen
+# move focused window to next/prev workspace
+# ctrl + shift - 1 : yabai -m window --space 1
+# ctrl + shift - 2 : yabai -m window --space 2
+# alt + shift - 3 : yabai -m window --space 3
+# alt + shift - 4 : yabai -m window --space 4
+# alt + shift - 5 : yabai -m window --space 5
+# alt + shift - 6 : yabai -m window --space 6
+# alt + shift - 7 : yabai -m window --space 7
+# alt + shift - 8 : yabai -m window --space 8
+# alt + shift - 9 : yabai -m window --space 9
+
+
+cmd + shift - m : open -n /System/Applications/Music.app
+# cmd - return : open -n /Applications/Alacritty.app
+cmd + shift + alt + ctrl - return : open -n /Applications/Alacritty.app
+# cmd - return : open -n /Applications/Alacritty.app
+# cmd - f : open -n /Applications/Firefox.app
+# cmd - t : open -n /Applications/Tor Browser.app
+
+cmd + shift - w : skhd -k "cmd - q"
+
+cmd + shift - return : osascript -e 'do shell script "$HOME/.config/vscode-profiles/runner/script.sh"'
+
+# cmd + shift - w [
+#   "/Applications/Visual\ Studio\ Code":  skhd -k "cmd - q"
+#   * : yabai -m window --close
+# ]
