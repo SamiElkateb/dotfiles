@@ -1,0 +1,44 @@
+[
+  {
+    "key": "enter",
+    "command": "list.select",
+    "when": "listFocus && !inputFocus && explorerViewletFocus"
+  },
+  {
+    "key": "alt+p",
+    "command": "markdown.showPreview",
+    "when": "editorLangId == markdown && vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+p",
+    "command": "latex-workshop.view",
+    "when": "editorLangId == latex && vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+p",
+    "command": "plantuml.preview",
+    "when": "editorLangId == plantuml && vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+b",
+    "command": "latex-workshop.build",
+    "when": "editorLangId == latex && vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+b",
+    "command": "code-runner.run",
+    "when": "editorLangId == c && vim.mode == 'Normal'"
+  },
+  {
+    "command": "vscode-neovim.compositeEscape1",
+    "key": "k",
+    "when": "neovim.mode == insert && editorTextFocus",
+    "args": "k"
+  },
+  {
+    "command": "vscode-neovim.compositeEscape2",
+    "key": "j",
+    "when": "neovim.mode == insert && editorTextFocus",
+    "args": "j"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "key": "tab",
+    "command": "workbench.action.quickOpenNavigateNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "shift+tab",
+    "command": "workbench.action.quickOpenNavigatePrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "workbenchState != empty"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "workbench.action.showAllSymbols"
+  },
+  {
+    "command":"projectManager.listProjects",
+    "key":"ctrl+p",
+    "when": "workbenchState == empty"
+  }
+]

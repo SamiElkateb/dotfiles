@@ -1,0 +1,15 @@
+[
+  "vscjava.vscode-java-test",
+  "vscjava.vscode-java-dependency",
+  "vscjava.vscode-maven",
+  "redhat.java",
+  "VisualStudioExptTeam.intellicode-api-usage-examples",
+  "VisualStudioExptTeam.vscodeintellicode",
+  "vscjava.vscode-java-pack",
+  "vscjava.vscode-java-debug",
+  "ms-vscode-remote.remote-ssh",
+  "ms-vscode.remote-explorer",
+  "ms-vscode-remote.remote-ssh-edit",
+  "SonarSource.sonarlint-vscode",
+  "mads-hartmann.bash-ide-vscode"
+]

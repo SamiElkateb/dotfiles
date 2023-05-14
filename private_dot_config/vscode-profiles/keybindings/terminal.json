@@ -1,0 +1,49 @@
+[
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focus",
+    "when": "terminalIsOpen && editorFocus && !terminalTabsFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus && !terminalTabsFocus"
+  },
+  {
+    "command": "workbench.action.tasks.runTask",
+    "args": "terminal-next-in-tabs",
+    "key": "ctrl+j",
+    "when": "terminalTabsFocus"
+  },
+  {
+    "command": "workbench.action.tasks.runTask",
+    "args": "terminal-new-in-tabs",
+    "key": "ctrl+n",
+    "when": "terminalTabsFocus"
+  },
+  {
+    "command": "workbench.action.tasks.runTask",
+    "args": "terminal-previous-in-tabs",
+    "key": "ctrl+k",
+    "when": "terminalTabsFocus"
+  },
+  {
+    "command": "terminal.focus",
+    "key": "ctrl+h",
+    "when": "terminalTabsFocus"
+  },
+  {
+    "command": "workbench.action.terminal.focusTabs",
+    "key": "ctrl+l",
+    "when": "terminalFocus"
+  },
+  {
+    "command": "workbench.action.terminal.new",
+    "key": "ctrl+n",
+    "when": "terminalFocus"
+  }
+]

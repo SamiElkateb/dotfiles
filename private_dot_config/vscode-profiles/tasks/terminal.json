@@ -1,0 +1,33 @@
+[
+  {
+    "label": "terminal-focus-next",
+    "command": "${command:workbench.action.terminal.focusNext}"
+  },
+  {
+    "label": "terminal-focus-previous",
+    "command": "${command:workbench.action.terminal.focusPrevious}"
+  },
+  {
+    "label": "terminal-focus-tabs",
+    "command": "${command:workbench.action.terminal.focusTabs}"
+  },
+  {
+    "label": "terminal-new",
+    "command": "${command:workbench.action.terminal.new}"
+  },
+  {
+    "label": "terminal-next-in-tabs",
+    "dependsOrder": "sequence",
+    "dependsOn": ["terminal-focus-next", "terminal-focus-tabs"]
+  },
+  {
+    "label": "terminal-previous-in-tabs",
+    "dependsOrder": "sequence",
+    "dependsOn": ["terminal-focus-previous", "terminal-focus-tabs"]
+  },
+  {
+    "label": "terminal-new-in-tabs",
+    "dependsOrder": "sequence",
+    "dependsOn": ["terminal-new", "terminal-focus-tabs"]
+  }
+]

@@ -1,0 +1,17 @@
+[
+  
+	{
+		"name": "LaPetitePrincesse",
+		"rootPath": "/Users/Sami/workspace/polytech/td/monde-virtuel/LaPetitePrincesse",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	},
+	{
+		"name": "unity",
+		"rootPath": "/Users/Sami/workspace/polytech/td/monde-virtuel/unity/RacingGame",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	}
+]

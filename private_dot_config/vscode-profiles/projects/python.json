@@ -1,0 +1,23 @@
+[
+  {
+    "name": "python-playground",
+    "rootPath": "/Users/Sami/workspace/playground/python-playground",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  },
+	{
+		"name": "gpu-programming",
+		"rootPath": "vscode-remote://ssh-remote+boole.polytech.unice.fr/net/home/e/es206553/Documents/gpu-programming",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	},
+	{
+		"name": "puissance4",
+		"rootPath": "/Users/Sami/workspace/polytech/td/algorithmie/puissance4",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	}
+]

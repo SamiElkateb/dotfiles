@@ -1,0 +1,50 @@
+{
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+	"gitlens.telemetry.enabled": false,
+  "editor.formatOnSave": false,
+  "editor.lineNumbers": "relative",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.colorTheme": "Tokyo Night",
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "editor.minimap.enabled": false,
+  "telemetry.telemetryLevel": "off",
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "react",
+  "material-icon-theme.opacity": 0.6,
+  "material-icon-theme.saturation": 0.8,
+  "zenMode.hideLineNumbers": false,
+  "projectManager.cacheProjectsBetweenSessions": false,
+  "projectManager.removeCurrentProjectFromList": true,
+  "terminal.integrated.enablePersistentSessions": false,
+  "workbench.startupEditor": "none",
+  "window.restoreWindows": "none",
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.editor.enablePreview": true,
+  "files.hotExit": "off",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/vscode-profiles/settings/init.vim",
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.terminal.focusTabs",
+    "workbench.action.increaseViewSize",
+    "workbench.action.decreaseViewSize",
+    "workbench.action.focusSideBar"
+  ],
+  "editor.formatOnPaste": true,
+  "files.exclude": {
+    "**/.git": false
+  },
+	"find-it-faster.advanced.disableStartupChecks": true,
+	"find-it-faster.general.showMaximizedTerminal": true,
+	"find-it-faster.general.batTheme": "tokyo-night",
+	"searchEverywhere.shouldInitOnStartup": true,
+	"github.copilot.enable": {
+        "*": false
+    }
+}

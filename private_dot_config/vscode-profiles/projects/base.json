@@ -1,0 +1,16 @@
+[
+  {
+    "name": "vscode-profiles",
+    "rootPath": "/Users/Sami/.config/vscode-profiles",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  },
+	{
+		"name": "git-hooks-toolkit",
+		"rootPath": "/Users/Sami/workspace/git-hooks-toolkit",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	}
+]

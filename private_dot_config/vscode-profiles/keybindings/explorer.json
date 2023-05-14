@@ -1,0 +1,17 @@
+[
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "listFocus && !inputFocus && explorerViewletFocus"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "listFocus && !inputFocus && explorerViewletFocus"
+  },
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "listFocus && !inputFocus && explorerViewletFocus"
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusPreviousGroup",
+    "when": "!sideBarVisible"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusPreviousGroup",
+    "when": "activeEditorGroupIndex != 1"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusSideBar",
+    "when": "sideBarVisible && activeEditorGroupIndex == 1"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusSideBar",
+    "when": "terminalFocus && !terminalTabsFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusSideBar",
+    "when": "activeEditorGroupEmpty"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusNextGroup"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.nextSideBarView",
+    "when": "sideBarFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.previousSideBarView",
+    "when": "sideBarFocus"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "workbench.action.decreaseViewSize"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "workbench.action.increaseViewSize"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "capteurs",
+    "rootPath": "/Users/Sami/workspace/polytech/td/capteurs/project",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  },
+  {
+    "name": "capteurs",
+    "rootPath": "/Users/Sami/workspace/polytech/td/capteurs/",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  },
+	{
+		"name": "prog-para",
+		"rootPath": "/Users/Sami/workspace/polytech/td/prog-para",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	},
+  {
+    "name": "c-playground",
+    "rootPath": "/Users/Sami/workspace/playground/c-playground",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "0-ps8-2023-tobethree",
+    "rootPath": "/Users/Sami/workspace/polytech/td/projet-s8/ps8-2023-tobethree",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  },
+  {
+    "name": "1-structure-donnee",
+    "rootPath": "/Users/Sami/workspace/polytech/td/algorithmie/structure-donnee",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  },
+  {
+    "name": "web-playground",
+    "rootPath": "/Users/Sami/workspace/playground/web-playground",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  },
+  {
+    "name": "templater",
+    "rootPath": "/Users/Sami/workspace/extensions/templater",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  },
+  {
+    "name": "connect-4",
+    "rootPath": "/Users/Sami/workspace/polytech/td/projet-s8/draft/connect-4",
+    "paths": [],
+    "tags": [],
+    "enabled": true
+  }
+]
