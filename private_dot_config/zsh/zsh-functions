@@ -228,3 +228,11 @@ function fuzzyvscode() {
     echo "$PWD"/"$selected" > $TMPDIR/fuzzyselection.txt
 }
 
+function ssh() {
+  helper="$HOME/.config/tmux/ssh-tmux-background.sh"
+  command ssh \
+    -o PermitLocalCommand=yes \
+    -o LocalCommand="'$helper' '%h'" \
+    "$@"
+  "$helper" "none"
+}
