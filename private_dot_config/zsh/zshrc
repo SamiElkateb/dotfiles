@@ -7,10 +7,7 @@ export ZDOTDIR=$HOME/.config/zsh
 HISTFILE=~/.zsh_history
 setopt appendhistory
 source "$HOME/.zprofile"
-if [ -f "$ZDOTDIR/env" ]; then
-  source "$ZDOTDIR/env"
-fi
-
+source "$HOME/.config/zsh/env"
 
 # options (man zshoptions)
 setopt autocd extendedglob nomatch menucomplete
@@ -18,7 +15,6 @@ setopt interactive_comments
 stty stop undef		# Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
 unsetopt BEEP
-
 
 # completions
 autoload -Uz compinit
@@ -56,5 +52,3 @@ if [ "$terminal" = "alacritty" ]; then
   neofetch
 fi
 
-# keymaps
-source "$ZDOTDIR/keymaps"
