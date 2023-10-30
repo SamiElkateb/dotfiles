@@ -95,6 +95,14 @@ function newReport(){
   cp -r "$HOME/workspace/latex-templates/report/images"  "$PWD/report"
 }
 
+function newBeamer(){
+  mkdir beamer
+  cp "$HOME/workspace/latex-templates/beamer-code/main.tex" "$PWD/beamer/"
+  cp -r "$HOME/workspace/latex-templates/beamer-code/template" "$PWD/beamer/template"
+  cp -r "$HOME/workspace/latex-templates/beamer-code/example" "$PWD/beamer/content"
+  cp -r "$HOME/workspace/latex-templates/beamer-code/images"  "$PWD/beamer/images"
+}
+
 function build_vscode_settings(){
   $HOME/.config/vscode-profiles/settings/builder.js $1
   yes | cp "$HOME/.config/vscode-profiles/settings/settings.json" "$HOME/.config/vscode-profiles/common/data/User/settings.json" 
@@ -230,9 +238,14 @@ function fuzzyvscode() {
 
 function ssh() {
   helper="$HOME/.config/tmux/ssh-tmux-background.sh"
+  encoded_bashrc=$(base64 < "$HOME/.config/zsh/remote/bashrc")
+
   command ssh \
     -o PermitLocalCommand=yes \
     -o LocalCommand="'$helper' '%h'" \
-    "$@"
+    "$@" -t "bash --rcfile <(echo '$encoded_bashrc' | base64 --decode)"
+    
   "$helper" "none"
 }
+
+

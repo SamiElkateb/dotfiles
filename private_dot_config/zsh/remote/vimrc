@@ -1,0 +1,26 @@
+set nocompatible
+
+set relativenumber
+set number
+set numberwidth=2
+
+set ignorecase
+set smartcase
+syntax enable
+" tabs
+set expandtab
+set smarttab
+set shiftwidth=2
+set tabstop=2
+
+" cursor
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
+" reset the cursor on start
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END

@@ -125,5 +125,6 @@
 			],
 			"env": {}
 		}
-	]
+	],
+	"ltex.language": "fr"
 }

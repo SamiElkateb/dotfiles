@@ -16,6 +16,8 @@ yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="^Logi Options$" manage=off
+yabai -m rule --add title="MovieWriter" manage=off sticky=on layer=above manage=off
+# yabai -m rule --add app="MovieWriter.*" sticky=on layer=above manage=off
 
 yabai -m rule --add app="Main" manage=off
 yabai -m rule --add app="Field" manage=off

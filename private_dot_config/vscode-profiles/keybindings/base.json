@@ -40,5 +40,35 @@
     "key": "j",
     "when": "neovim.mode == insert && editorTextFocus",
     "args": "j"
-  }
+  },
+	{
+		"key": "shift+o",
+		"command": "notebook.cell.insertCodeCellAboveAndFocusContainer",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "a",
+		"command": "-notebook.cell.insertCodeCellAboveAndFocusContainer",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "i",
+		"command": "notebook.cell.edit",
+		"when": "notebookCellListFocused && notebookEditable && !editorHoverFocused && !inputFocus"
+	},
+	{
+		"key": "enter",
+		"command": "-notebook.cell.edit",
+		"when": "notebookCellListFocused && notebookEditable && !editorHoverFocused && !inputFocus"
+	},
+	{
+		"key": "o",
+		"command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "b",
+		"command": "-notebook.cell.insertCodeCellBelowAndFocusContainer",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	}
 ]

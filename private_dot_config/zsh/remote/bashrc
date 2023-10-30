@@ -1,0 +1,49 @@
+# User specific aliases and functions
+set -o vi
+bind '"kj":vi-movement-mode'
+bind "set show-mode-in-prompt on"
+bind 'set vi-cmd-mode-string "\1\e[2 q\2"'
+bind 'set vi-ins-mode-string "\1\e[6 q\2"'
+
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
+
+source /etc/bash_completion
+source <(kubectl completion bash)
+source <(helm completion bash)
+
+alias addcompletion="sudo apt install bash-completion && source /etc/bash_completion"
+
+alias vim='vim -u <(cat << VIMRC
+set nocompatible
+
+set relativenumber
+set number
+set numberwidth=2
+
+set ignorecase
+set smartcase
+syntax enable
+" tabs
+set expandtab
+set smarttab
+set shiftwidth=2
+set tabstop=2
+
+" cursor
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
+" reset the cursor on start
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END
+
+VIMRC
+)'
